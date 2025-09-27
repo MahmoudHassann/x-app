@@ -1,0 +1,138 @@
+.head-filter-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: #f7f7f7;
+  border-bottom: 2px solid hsl(0, 0%, 86%);
+  .filter {
+    display: flex;
+    flex-wrap: wrap;
+
+    .by-color {
+      .dropdown-menu {
+        padding: 20px;
+        width: 360px;
+        .wrap {
+          display: flex;
+          justify-content: space-between;
+          .one-column,
+          .two-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+          }
+        }
+        li {
+          display: flex;
+          align-items: center;
+        }
+        input {
+          position: relative;
+          width: 20px;
+          height: 20px;
+          &:before {
+            position: absolute;
+            content: "";
+            height: 100%;
+            width: 100%;
+            left: 0;
+            top: 0;
+            border: 1px solid #090909;
+          }
+
+          &#metalCheckBox:before {
+            background-color: #999999;
+          }
+
+          &#whiteCheckBox:before {
+            background-color: #ffffff;
+          }
+
+          &#beigeCheckBox:before {
+            background-color: #f5f5dc;
+          }
+
+          &#yellowCheckBox:before {
+            background-color: #ffff00;
+          }
+
+          &#orangeCheckBox:before {
+            background-color: #ffa500;
+          }
+          &#redCheckBox:before {
+            background-color: #ff0000;
+          }
+          &#pinkCheckBox:before {
+            background-color: #ffc0cb;
+          }
+          &#purpleCheckBox:before {
+            background-color: #800080;
+          }
+          &#lightBlueCheckBox:before {
+            background-color: #add8e6;
+          }
+          &#mediumBlueCheckBox:before {
+            background-color: #0000ff;
+          }
+          &#darkBlueCheckBox:before {
+            background-color: #00008b;
+          }
+          &#greenCheckBox:before {
+            background-color: #008000;
+          }
+          &#brownCheckBox:before {
+            background-color: #a52a2a;
+          }
+
+          &#greyCheckBox:before {
+            background-color: #808080;
+          }
+          &#blackCheckBox:before {
+            background-color: #000000;
+          }
+          &#otherCheckBox:before {
+            background-color: #999999;
+          }
+        }
+        label {
+          margin-left: 10px;
+        }
+      }
+    }
+  }
+
+  button {
+    background-color: transparent;
+    color: #303030;
+    font-weight: bold;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    &:hover {
+      color: #303030;
+      background-color: transparent;
+    }
+    &:active {
+      color: #303030 !important;
+      background-color: transparent !important;
+    }
+    &[aria-expanded="true"] {
+      background-color: #fff;
+      color: #303030;
+      &::after {
+        transform: 180deg;
+      }
+    }
+  }
+  .dropdown-menu {
+    border: none;
+    border-radius: 0;
+    margin-top: -2px !important;
+  }
+  .sort span.gray_span {
+    color: #999999;
+    font-size: 15px;
+  }
+}

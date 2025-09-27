@@ -1,0 +1,100 @@
+.large_link {
+  background-color: #00385f;
+  color: #fff;
+  font-weight: 500;
+  outline: none;
+  border: 2px solid #00385f;
+  padding: 8px 20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.large_link:hover {
+  background-color: transparent;
+  color: #000;
+}
+.large_link.full_Width {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.large_link.full_Width.gray {
+  background-color: transparent;
+  border-color: #aaa;
+  color: #aaa;
+  &:hover {
+    color: #000;
+    border-color: #000;
+  }
+}
+.large_button {
+  background-color: #00385f;
+  color: #fff;
+  padding: 13px;
+  height: 50px;
+  min-width: 220px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.payPal {
+    background-color: #ffc439;
+    color: #303030;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: #ffc439;
+    }
+    p {
+      margin: 3px 0 0 10px;
+    }
+    img {
+      width: 100px;
+    }
+  }
+}
+
+.large_button:hover {
+  background-color: #01203a;
+}
+.xLarge_button {
+  background-color: #00385f;
+  color: #fff;
+  padding: 16px;
+
+  min-width: 220px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.xLarge_button:hover {
+  background-color: #01203a;
+}
+
+.header_link {
+  color: #999999;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    color: #000;
+  }
+  &:hover {
+    color: #000;
+  }
+}

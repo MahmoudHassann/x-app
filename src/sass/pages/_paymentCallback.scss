@@ -1,0 +1,78 @@
+.callback_page {
+  h3,
+  p,
+  h4 {
+    margin: 0;
+  }
+  a {
+    text-decoration: none;
+  }
+  padding: 140px 0 100px;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 16px;
+    .head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      column-gap: 12px;
+      h2 {
+        margin: 0;
+        color: #73c21e;
+      }
+      h2.title_faild {
+        color: #dc3545;
+      }
+    }
+    .icon_success {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: #73c21e;
+      color: #fff;
+      border-radius: 50%;
+    }
+    .icon_failed {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      background-color: #dc3545;
+      color: #fff;
+      border-radius: 50%;
+    }
+
+    p.message {
+      font-weight: bold;
+      text-align: center;
+      width: 100%;
+      letter-spacing: 2px;
+    }
+
+    .order_details {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+      gap: 6px;
+      p {
+        span {
+          font-weight: bold;
+          font-size: 14px;
+        }
+      }
+    }
+    .actions_bottom {
+      margin-top: 24px;
+      display: flex;
+      width: 100%;
+      justify-content: space-evenly;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+%position_fixed_full_screen {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+%display_flex_align_and_content_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+%display_flex_align_center {
+  display: flex;
+  align-items: center;
+}
+%display_flex_align_center_content_between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

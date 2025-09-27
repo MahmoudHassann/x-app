@@ -1,0 +1,18 @@
+@use "./pages/authentication";
+@use "./layout/navbar";
+@use "./layout/footer";
+
+@use "./components/product";
+@use "./components/buttons";
+@use "./components/topBar";
+
+@use "./pages/checkout";
+@use "./pages/home";
+@use "./pages/shop";
+@use "./pages/searchPage";
+@use "./pages/paymentCallback";
+@use "./utils/globals";
+@use "./pages/productDetails";
+@use "./components/sideAccordion";
+@use "./components/searchPanel";
+@use "./components/filterPanel";

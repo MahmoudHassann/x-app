@@ -1,0 +1,102 @@
+footer {
+    background-color: rgb(247, 247, 247);
+    padding: 50px 140px;
+    margin-top: 40px;
+  }
+  footer .mobile-linklist {
+    display: none;
+  }
+  
+  footer .mobile-linklist .accordion-item,
+  footer .mobile-linklist .accordion-item .accordion-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  footer .linklist-panel {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  footer .linklist-panel .linklist .linklist-list,
+  footer .mobile-linklist .linklist-list {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    row-gap: 10px;
+  }
+  footer .linklist-panel .linklist h2 {
+    color: #303030;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  footer .linklist-panel .linklist .linklist-list a,
+  footer .mobile-linklist .linklist-list a {
+    text-decoration: none;
+    font-size: 13px;
+    color: #999999;
+  }
+  footer .linklist-panel .linklist .linklist-list a.find-store,
+  footer .mobile-linklist .linklist-list a.find-store {
+    width: fit-content;
+    border: 2px solid rgb(220, 220, 220);
+    background-color: transparent;
+    color: rgb(48, 48, 48);
+    padding: 10px 40px;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 700;
+    outline: 0px;
+    cursor: pointer;
+  }
+  footer .mobile-linklist .linklist-list a.find-store {
+    width: 100%;
+  }
+  footer .mobile-linklist .accordion-button {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  footer ul.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  footer ul.links li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  footer ul.links li a {
+    columns: #fff;
+    background-color: rgb(153, 153, 153);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  footer ul.links li a:hover {
+    background-color: #303030;
+  }
+  @media (max-width: 767px) {
+    footer .linklist-panel {
+      display: none;
+    }
+    footer .mobile-linklist {
+      display: block;
+    }
+    footer {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 991px) {
+    footer {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
+  }
+  

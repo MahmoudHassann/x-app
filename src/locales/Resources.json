@@ -1,0 +1,102 @@
+{
+  "shop": {
+    "en": "shop",
+    "ar": "المتجر"
+  },
+  "springUpdate": {
+    "en": "Spring update: Discover the latest",
+    "ar": "تحديث الربيع: اكتشف الأحدث"
+  },
+  "selectSizeFirst": {
+    "en": "Please choose the size first",
+    "ar": "رجاء اختيار المقاس اولاً"
+  },
+  "cannotAddMore": {
+    "en": "Sorry, we cannot add more of this product. Maximum available quantity is",
+    "ar": "عذرًا، لا يمكننا إضافة المزيد من هذا المنتج. الحد الأقصى للكمية المتاحة هو"
+  },
+  "continueShopping": {
+    "en": "Continue shopping",
+    "ar": "مواصلة التسوق"
+  },
+  "shoppingBag": {
+    "en": "Shopping Bag",
+    "ar": "حقيبة التسوق"
+  },
+  "proceedToCheckout": {
+    "en": "Proceed to checkout",
+    "ar": "الانتقال إلى الدفع"
+  },
+  "itemsNotReserved": {
+    "en": "Items not reserved",
+    "ar": "العناصر غير محجوزة"
+  },
+  "checkoutNowToMakeThemYours": {
+    "en": "checkout now to make them yours",
+    "ar": "قم بالدفع الآن لجعلها ملكك"
+  },
+  "quantity": {
+    "en": "Quantity",
+    "ar": "الكمية"
+  },
+  "subtotal": {
+    "en": "Subtotal",
+    "ar": "المجموع الفرعي"
+  },
+  "shipping": {
+    "en": "Shipping",
+    "ar": "الشحن"
+  },
+  "free": {
+    "en": "Free",
+    "ar": "مجاناً"
+  },
+  "shippingType": {
+    "en": "DHL Standard",
+    "ar": "دي إتش إل القياسي"
+  },
+  "ordersCanBeDelivered": {
+    "en": "Orders can be delivered to your home or office, to a DHL Service Point or to a selected G-Star store.",
+    "ar": "يمكن تسليم الطلبات إلى منزلك أو مكتبك، إلى نقطة خدمة دي إتش إل أو إلى متجر G-Star المحدد."
+  },
+  "oneToTwoDaysDeliveryTime": {
+    "en": "1-2 days delivery time.",
+    "ar": "وقت التوصيل 1-2 يوم."
+  },
+  "free60DayReturns": {
+    "en": "Free 60 day returns on your order",
+    "ar": "إرجاع مجاني لمدة 60 يومًا على طلبك"
+  },
+  "inStorePickupAndReturnsEligible": {
+    "en": "In store pick up and returns eligible",
+    "ar": "مؤهل للاستلام والإرجاع داخل المتجر"
+  },
+  "totalInclVAT": {
+    "en": "Total Incl. VAT",
+    "ar": "الإجمالي شامل ضريبة القيمة المضافة"
+  },
+  "youSave": {
+    "en": "You save € 249,96 with this order",
+    "ar": "لقد وفرت 249,96 يورو مع هذا الطلب"
+  },
+  "total": {
+    "en": "Total",
+    "ar": "الإجمالي"
+  },
+  "inclVat": {
+    "en": "Incl. VAT",
+    "ar": "يتضمن. الضريبة"
+  },
+  "addedToCart": {
+    "en": "Added to cart",
+    "ar": "تمت إضافة العنصر إلي السلة"
+  },
+  "freeShipping": {
+    "en": "Free shipping",
+    "ar": "شحن مجاني"
+  },
+  "60DayReturns": {
+    "en": "Free 60 day returns",
+    "ar": "إرجاع مجاني لمدة 60 يومًا"
+  }
+}

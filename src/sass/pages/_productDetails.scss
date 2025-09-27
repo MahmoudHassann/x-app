@@ -1,0 +1,207 @@
+.product_details {
+  padding: 54px 0;
+
+  .preview_area {
+    height: 100vh;
+  }
+
+  .name-product {
+    font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 26px;
+    letter-spacing: -1px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+  }
+  .price-product {
+    font-weight: 900;
+    font-size: 18px;
+    font-family: "Roboto", sans-serif;
+    .vat {
+      font-size: 14px;
+      color: #4b555e;
+      font-weight: 400;
+    }
+  }
+
+  .colors-panel .panel ul,
+  .sizing-area .panel ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+  }
+  .colors-panel {
+    .panel {
+      ul {
+        li {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+          overflow: hidden;
+          cursor: pointer;
+          img {
+            width: 100%;
+          }
+          &.selected-color {
+            border: 1px solid #000;
+          }
+        }
+      }
+    }
+    .color-name {
+      color: #000;
+      font-weight: 400;
+      font-size: 12px;
+      text-decoration: underline;
+    }
+  }
+
+  .sizing-area {
+    .panel {
+      ul {
+        li {
+          border: 1px solid #000;
+          width: 40px;
+          height: 40px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          &.selected-size {
+            border-bottom-width: 3px;
+            font-weight: bold;
+            position: relative;
+          }
+          &.disabled-size {
+            border-color: rgb(138, 147, 154);
+            color: rgb(138, 147, 154);
+            background: repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 25.5px,
+              rgb(138, 147, 154) 26.5px,
+              rgb(138, 147, 154) 26.5px
+            );
+            cursor: not-allowed;
+          }
+        }
+      }
+    }
+  }
+
+  .is-available {
+    p {
+      color: #12a100;
+      font-size: 13px;
+      font-weight: 600;
+      margin: 15px 0 5px;
+    }
+  }
+  .low_stock_msg {
+    p {
+      color: red;
+      font-size: 12px;
+      span {
+        font-weight: bold;
+      }
+    }
+  }
+  .buttons-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    button {
+      outline: none;
+      background-color: transparent;
+      border: none;
+    }
+    .add_cart {
+      flex: 1;
+      border: 2px solid #00385f;
+      background-color: #00385f;
+      text-align: center;
+      font-weight: 700;
+      min-width: 133px;
+      padding: 0px 20px;
+      height: 40px;
+      color: #fff;
+      font-size: 14px;
+      position: relative;
+      &:hover {
+        background-color: transparent;
+        color: #00385f;
+      }
+    }
+    .add_wishlist {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #000;
+    }
+  }
+
+  .accordion-panel {
+    h2 {
+      button {
+        font-weight: bolder;
+        font-size: 15px;
+        padding: 15px 0;
+        &:not(.collapsed) {
+          background-color: transparent;
+          box-shadow: none;
+        }
+        &:focus {
+          box-shadow: none;
+        }
+      }
+    }
+  }
+  .details_area {
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 20px 10px;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    .location_ups {
+      display: flex;
+      flex-direction: column;
+      font-size: 13px;
+      padding: 6px 0;
+      .location {
+        display: flex;
+        .icon {
+          width: 10px;
+          height: 10px;
+          margin-right: 15px;
+          font-size: 12px;
+        }
+        p {
+          text-decoration: underline;
+        }
+      }
+      .ups {
+        display: flex;
+        justify-content: space-between;
+        .icon {
+          width: 10px;
+          height: 10px;
+          margin-right: 15px;
+          font-size: 12px;
+        }
+        .wrap {
+          display: flex;
+        }
+      }
+      .cost_shipping {
+        text-transform: uppercase;
+        font-weight: bold;
+        color: #12a100;
+        font-size: 14px;
+      }
+    }
+  }
+}
