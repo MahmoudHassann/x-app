@@ -118,7 +118,7 @@ export default function Home() {
                         observer
                         observeParents
                         breakpoints={{
-                          0: { slidesPerView: 2, spaceBetween: 12 },
+                          0: { slidesPerView: 1, spaceBetween: 12 },
                           768: { slidesPerView: 4, spaceBetween: 16 },
                           1024: { slidesPerView: 4, spaceBetween: 20 },
                         }}
