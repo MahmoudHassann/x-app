@@ -5,7 +5,7 @@ import { setSorted } from "../../redux/slices/filter-slice";
 const SortDropdown = () => {
   const dispatch = useDispatch();
   const sorted = useSelector((state) => state.filters.sortedBy);
-  const [selectedSort, setSelectedSort] = useState(sorted || "Relevance");
+  const [selectedSort, setSelectedSort] = useState(sorted || "New");
 
   const handleSizeChange = (event) => {
     const selectedSort = event.target.value;
@@ -14,7 +14,7 @@ const SortDropdown = () => {
   };
 
   useEffect(() => {
-    setSelectedSort(sorted || "Relevance");
+    setSelectedSort(sorted || "New");
   }, [sorted]);
 
   return (
@@ -30,7 +30,7 @@ const SortDropdown = () => {
       </button>
       <ul className="dropdown-menu parentFilterPanel">
         {[
-          "Relevance",
+        
           "New",
           "Sale",
           "Bestsellers",

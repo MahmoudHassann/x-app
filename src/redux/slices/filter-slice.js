@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   priceRange: [0, Infinity],
-  colors: [],
-  lengths: [],
+ 
+ 
   sizes: [],
-  fit: [],
+ 
   category: [],
-  gender: [],
-  sortedBy: "Relevance",
+ 
+  sortedBy: "New",
 };
 
 const filterSlice = createSlice({

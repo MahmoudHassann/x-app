@@ -69,6 +69,8 @@ main.home {
       }
       .collections {
         display: flex;
+        // flex-wrap: wrap;
+        gap: 1rem;
         position: relative;
         width: 100%;
         padding-top: 20px;
@@ -78,12 +80,14 @@ main.home {
           position: relative;
           cursor: pointer;
           opacity: 0.5;
-          transform: translateX(-100%);
           transition: 0.3s ease;
-          max-width: 220px;
+          height: 400px;
+          // max-width: 300px;
+ 
           img {
-            width: 100%;
+            // width: 100%;
             height: 100%;
+            object-fit: cover;
             transition: 0.3s ease-in-out;
           }
           .link {
@@ -92,7 +96,7 @@ main.home {
             width: 100%;
             top: 50%;
             transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.3);
+             background-color: rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -110,7 +114,9 @@ main.home {
               text-align: center;
             }
           }
+          
           &:hover {
+                opacity: 1;
             img {
               transform: scale(110%);
             }
@@ -388,3 +394,62 @@ main.home {
     }
   }
 }
+
+
+/* ما تخليش الـcollections تفرض Flex على السويبر */
+.filter-by .collections {
+  /* display: flex;  <-- اشطبها */
+  width: 100%;
+  padding-top: 20px;
+}
+
+/* الكارت: شيل الـopacity الافتراضي وخليه طبيعي */
+.filter-by .collections .collection-box {
+  position: relative;
+  cursor: pointer;
+  transition: 0.3s ease;
+  height: 320px;              /* قللها لو تحب */
+  opacity: 1;                 /* بدل 0.5 */
+  overflow: hidden;
+}
+
+/* الصورة تاخد المساحة بالكامل */
+.filter-by .collections .collection-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.3s ease-in-out;
+  display: block;
+}
+
+/* الoverlay: يكون شفاف افتراضيًا */
+.filter-by .collections .collection-box .link {
+  position: absolute;
+  inset: 0; /* top/right/bottom/left: 0 */
+  background-color: transparent;        /* بدل rgba(0,0,0,.3) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+
+/* النص على زر خفيف بدل ما يملأ الكادر كله */
+.filter-by .collections .collection-box .link a {
+  color: #fff;
+  font-weight: 900;
+  font-size: 16px;
+  text-decoration: none;
+  padding: 6px 12px;
+  background: rgba(0,0,0,.55);
+  border-radius: 6px;
+}
+
+/* على الهوفر نضيف ضبابية خفيفة للصورة ونخف الoverlay */
+.filter-by .collections .collection-box:hover img {
+  transform: scale(1.06);
+}
+.filter-by .collections .collection-box:hover .link a {
+  background: rgba(0,0,0,.4);
+}
+.swiper { width: 100%; }
+.swiper-slide { width: auto; }

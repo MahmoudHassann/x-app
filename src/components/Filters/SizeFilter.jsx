@@ -6,33 +6,22 @@ const SizeFilter = () => {
   const selectedSizes = useSelector((state) => state.filters.sizes);
 
   const handleCheckBoxChange = (event) => {
-    const { name, checked } = event.target;
+    const { value, checked } = event.target;
     let updatedSizes;
 
     if (checked) {
-      updatedSizes = [...selectedSizes, name];
+      updatedSizes = [...selectedSizes, value];
     } else {
-      updatedSizes = selectedSizes.filter((size) => size !== name);
+      updatedSizes = selectedSizes.filter((size) => size !== value);
     }
 
     dispatch(setSizes(updatedSizes));
   };
 
   const sizes = [
-    { name: "XXS", label: "XXS" },
-    { name: "XS", label: "XS" },
-    { name: "S", label: "S" },
-    { name: "M", label: "M" },
-    { name: "L", label: "L" },
-    { name: "XL", label: "XL" },
-    { name: "XXL", label: "XXL" },
-    { name: "29", label: "29" },
-    { name: "30", label: "30" },
-    { name: "31", label: "31" },
-    { name: "32", label: "32" },
-    { name: "33", label: "33" },
-    { name: "34", label: "34" },
-    { name: "36", label: "36" },
+    { name: "XXS", label: "XXS" ,id:1},
+    { name: "XS", label: "XS",id:2 },
+    
   ];
 
   return (
@@ -46,15 +35,16 @@ const SizeFilter = () => {
         Size
       </button>
       <ul className="dropdown-menu parentFilterPanel">
-        {sizes.map(({ name, label }) => (
+        {sizes.map(({ name, label,id }) => (
           <li key={name}>
             <input
               type="checkbox"
+               value={id}
               name={name}
               id={`size${name}CheckBox`}
               className="filterCheckBox"
               onChange={handleCheckBoxChange}
-              checked={selectedSizes.includes(name)}
+              
             />
             <label htmlFor={`size${name}CheckBox`}>{label}</label>
           </li>

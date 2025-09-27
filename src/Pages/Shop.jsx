@@ -8,20 +8,53 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Shop() {
-
   const isOpen = useSelector((state) => state.layout.navOpen);
   const filters = useSelector((state) => state.filters);
-  const [products,setProducts] = useState([])
+  const [products, setProducts] = useState([]);
+  const [pageSize, setPageSize] = useState(12);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [sortDirection, setSortDirection] = useState("desc");
+  const [sortKey, setSortKey] = useState("");
   const { filteredProducts, loading } = useProductFiltering(products);
-  const getProducts = async() => {
-     const response = await axios.get('https://mister-x-store.com/mister_x_site/public/api/products_all')
-     console.log(response.data.data,'resppnnse')
-     setProducts(response.data.data)
+
+  const getProducts = async (filters) => {
+ 
+  let { sortedBy, ...cleanFilters } = filters;
+  let sortDir = sortDirection;
+
+ 
+  switch (sortedBy) {
+    case "Low to High":
+      sortedBy = "price";
+      sortDir = "asc";
+      setSortDirection(sortDir);
+      break;
+
+    case "High to Low":
+      sortedBy = "price";
+      sortDir = "desc";
+      setSortDirection(sortDir);
+      break;
+
+    default:
+      sortDir = "desc";
+      setSortDirection(sortDir);
+      break;
   }
+
+   const response = await axios.post(
+    `https://mister-x-store.com/mister_x_site/public/api/products/${sortDir}/${sortedBy}/${pageNumber}/${pageSize}`,
+    { filters: cleanFilters }
+  );
+
+   setProducts(response.data.data);
+};
+
+
   useEffect(() => {
-     getProducts()
-  }, [])
-  
+    getProducts(filters);
+  }, [filters]);
+
   return (
     <main className="shop-all">
       <div className={`custom-container ${isOpen ? "nav-open" : ""}`}>
@@ -62,7 +95,6 @@ export default function Shop() {
             <div className="container-fluid">
               <div className="row">
                 {products.map((product, index) => (
-                
                   <Product key={index} product={product} />
                 ))}
               </div>

@@ -1,5 +1,5 @@
 section.products_wrapper {
-  padding: 80px 0;
+  // padding: 80px 0;
   .row {
     row-gap: 50px;
   }
@@ -103,7 +103,11 @@ section.products_wrapper {
           border-radius: 50%;
           cursor: pointer;
           border: 1px solid #ddd;
-          background-color: red;
+          // background-color: red;
+          background-color: #fff;
+box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+
+
           display: flex;
           transition: transform 0.2s;
           overflow: hidden;

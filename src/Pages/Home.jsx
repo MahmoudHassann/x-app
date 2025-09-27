@@ -1,34 +1,54 @@
+// Home.jsx
 import { Link } from "react-router-dom";
-
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
-import Resources from "../locales/Resources.json";
-
-import { Suspense, useEffect,useState } from "react";
 import { Pagination } from "swiper/modules";
 import TopBar from "../components/TopBar";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import "swiper/css";
+import "swiper/css/pagination";
 
 export default function Home() {
   const isOpen = useSelector((state) => state.layout.navOpen);
-  let currentLanguage = localStorage.getItem("language")
-    ? localStorage.getItem("language")
-    : "en";
+  const baseImageUrl = "https://mister-x-store.com/mister_x_site/public/imgs/";
+
   const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const getCategories = async () => {
-    const response = await axios.get(
-      "https://mister-x-store.com/mister_x_site/public/api/categories"
-    );
-    console.log(response.data.data, "resppnnse");
-    setProducts(response.data.data);
+    try {
+      const response = await axios.get(
+        "https://mister-x-store.com/mister_x_site/public/api/categories"
+      );
+      setCategories(response.data?.data ?? []);
+    } catch (e) {
+      setError("حدث خطأ أثناء تحميل التصنيفات");
+    } finally {
+      setLoading(false);
+    }
   };
+
   useEffect(() => {
     getCategories();
   }, []);
+
+ 
+  useEffect(() => {
+    if (!loading && categories.length) {
+      console.log(
+        "sample imgs:",
+        categories.slice(0, 3).map((c) => `${baseImageUrl}${c.cat_img}`)
+      );
+    }
+  }, [loading, categories]);
+
   return (
     <main className="home">
       <div className={`custom-container ${isOpen ? "nav-open" : ""}`}>
         <TopBar />
+
         <header>
           <picture className="top-banner-image">
             <source
@@ -52,6 +72,7 @@ export default function Home() {
             <Link to="shop">shop men</Link>
           </div>
         </header>
+
         <section className="new-arrivals">
           <div className="container-fluid px-5 py-4">
             <div className="special-head">
@@ -76,6 +97,7 @@ export default function Home() {
                   </button>
                 </li>
               </ul>
+
               <div className="tab-content" id="myTabContent">
                 <div
                   className="tab-pane fade show active"
@@ -85,99 +107,54 @@ export default function Home() {
                   tabIndex="0"
                 >
                   <div className="collections">
-                    <Suspense fallback={<h1>hello loading</h1>}>
+                
+                    {!loading && categories.length > 0 && (
                       <Swiper
-                        slidesPerView={5}
-                        preloadImages={false}
-                        lazy={true}
-                        spaceBetween={40}
-                        pagination={{
-                          clickable: true,
-                        }}
+                        key={categories.length}
+                        slidesPerView={4} 
+                        spaceBetween={20}
+                        pagination={{ clickable: true }}
                         modules={[Pagination]}
+                        observer
+                        observeParents
                         breakpoints={{
-                          0: {
-                            slidesPerView: 2,
-                            spaceBetween: 20,
-                          },
-                          768: {
-                            slidesPerView: 4,
-                            spaceBetween: 30,
-                          },
-                          1024: {
-                            slidesPerView: 5,
-                            spaceBetween: 40,
-                          },
+                          0: { slidesPerView: 2, spaceBetween: 12 },
+                          768: { slidesPerView: 4, spaceBetween: 16 },
+                          1024: { slidesPerView: 4, spaceBetween: 20 },
                         }}
                       >
-                        <SwiperSlide>
-                          <div className="collection-box">
-                            <img
-                              loading="lazy"
-                              src="./men/MEN_JEANS.jpeg"
-                              alt=""
-                            />
-                            <div className="link">
-                              <a href="#">JEANS</a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                          <div className="collection-box">
-                            <img
-                              loading="lazy"
-                              src="./men/MEN_T-SHIRTS.jpeg"
-                              alt=""
-                            />
-                            <div className="link">
-                              <a href="#">T-SHIRTS & TOPS</a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                          <div className="collection-box">
-                            <img
-                              loading="lazy"
-                              src="./men/MEN_SHIRTS.jpeg"
-                              alt=""
-                            />
-
-                            <div className="link">
-                              <a href="#">SHIRTS</a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                        <SwiperSlide>
-                          <div className="collection-box">
-                            <img
-                              loading="lazy"
-                              src="./men/MEN_SWEATS.jpeg"
-                              alt=""
-                            />
-
-                            <div className="link">
-                              <a href="#">SWEATERS</a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
-
-                        <SwiperSlide>
-                          <div className="collection-box">
-                            <img
-                              loading="lazy"
-                              src="./men/MEN_PANTS.jpeg"
-                              alt=""
-                            />
-
-                            <div className="link">
-                              <a href="#">PANTS</a>
-                            </div>
-                          </div>
-                        </SwiperSlide>
+                        {categories.map((category) => {
+                          const id =
+                            category.id ?? category.cat_id ?? category.cat_name;
+                          const name = category.cat_name || "Category";
+                          const src = `${baseImageUrl}${category.cat_img}`;
+                          return (
+                            <SwiperSlide key={id} className="mx-slide">
+                              <div className="collection-box">
+                                <img
+                                  className="collection-img"
+                                  loading="lazy"
+                                  src={src}
+                                  alt={name}
+                                  onError={(e) => {
+                                    e.currentTarget.src = "/placeholder.jpg";
+                                  }}
+                                />
+                                <div className="link">
+                                  <Link
+                                    to={`/shop?cat=${encodeURIComponent(id)}`}
+                                  >
+                                    {name}
+                                  </Link>
+                                </div>
+                              </div>
+                            </SwiperSlide>
+                          );
+                        })}
                       </Swiper>
-                    </Suspense>
+                    )}
+
+                  
                   </div>
                 </div>
               </div>

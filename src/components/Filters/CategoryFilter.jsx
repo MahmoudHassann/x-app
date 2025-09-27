@@ -1,26 +1,50 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../redux/slices/filter-slice";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const CategoryFilter = () => {
   let dispatch = useDispatch();
   const selectedCategories = useSelector((state) => state.filters.category);
   const handleCheckBoxChange = (event) => {
-    const { name, checked } = event.target;
+    const { value, checked } = event.target;
 
     let updatedCategoryFilters;
     if (checked) {
-      updatedCategoryFilters = selectedCategories.includes(name)
+      updatedCategoryFilters = selectedCategories.includes(value)
         ? selectedCategories
-        : [...selectedCategories, name];
+        : [...selectedCategories, value];
     } else {
       updatedCategoryFilters = selectedCategories.filter(
-        (category) => category !== name
+        (category) => category !== value
       );
     }
     dispatch(setCategory(updatedCategoryFilters));
   };
+
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(
+        "https://mister-x-store.com/mister_x_site/public/api/categories"
+      );
+      console.log(response, "responseresponseresponseresponse");
+      setCategories(response.data?.data ?? []);
+    } catch (e) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   return (
     <div className="by-category">
+      {console.log("hehehe")}
       <button
         className="btn btn-secondary dropdown-toggle"
         type="button"
@@ -34,153 +58,20 @@ const CategoryFilter = () => {
         className="dropdown-menu dropdown-menu-start parentFilterPanel"
         aria-labelledby="categoryDropdown"
       >
-        <li>
-          <input
-            type="checkbox"
-            name="accessories"
-            id="accessoriesCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="accessoriesCheckBox">Accessories</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            name="gift_Card"
-            id="giftCardCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="giftCardCheckBox">Gift card</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            name="jackets_And_Blazers_Card"
-            id="jacketsAndBlazersCardCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="jacketsAndBlazersCardCheckBox">
-            Jackets & blazers
-          </label>
-        </li>
-
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="jeans"
-            id="jeansCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="jeansCheckBox">Jeans</label>
-        </li>
-
-        <li>
-          <input
-            type="checkbox"
-            name="jumpstits_And_Overalls"
-            id="jumpstitsAndOverallsCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="jumpstitsAndOverallsCheckBox">
-            Jumpsuits & overalls
-          </label>
-        </li>
-
-        <li>
-          <input
-            type="checkbox"
-            name="knitwear"
-            id="knitwearCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="knitwearCheckBox">Knitwear</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="pants"
-            id="pantsCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="pantsCheckBox">Pants</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="shirts"
-            id="shirtsCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="shirtsCheckBox">Shirts</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="shoes"
-            id="shoesCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="shoesCheckBox">Shoes</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="shorts"
-            id="shortsCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="shortsCheckBox">Shorts</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="sweats"
-            id="sweatsCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="sweatsCheckBox">Sweats</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            name="swimwear"
-            id="swimwearCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="swimwearCheckBox">Swimwear</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            className="filterCheckBox"
-            name="T-shirts"
-            id="tShirtsCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="tShirtsCheckBox">T-shirts</label>
-        </li>
-        <li>
-          <input
-            type="checkbox"
-            name="underwear"
-            id="underwearCheckBox"
-            className="filterCheckBox"
-            onChange={handleCheckBoxChange}
-          />
-          <label htmlFor="underwearCheckBox">Underwear</label>
-        </li>
+        {categories.map((category) => (
+          <li>
+            <input
+              type="checkbox"
+               value={category.cat_id}
+                name={category.cat_name}
+              id={`${category.cat_name}CheckBox`}
+              className="filterCheckBox"
+              onChange={handleCheckBoxChange}
+            />
+            <label htmlFor={`${category.cat_name}CheckBox`}>{category.cat_name}</label>
+          </li>
+        ))}
+        
       </ul>
     </div>
   );
