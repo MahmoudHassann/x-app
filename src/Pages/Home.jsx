@@ -1,6 +1,6 @@
 // Home.jsx
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import TopBar from "../components/TopBar";
@@ -8,11 +8,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
+import { setCategory } from "../redux/slices/filter-slice";
 
 export default function Home() {
   const isOpen = useSelector((state) => state.layout.navOpen);
   const baseImageUrl = "https://mister-x-store.com/mister_x_site/public/imgs/";
-
+  const dispatch = useDispatch()
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -24,7 +25,7 @@ export default function Home() {
       );
       setCategories(response.data?.data ?? []);
     } catch (e) {
-      setError("حدث خطأ أثناء تحميل التصنيفات");
+      setError("Categories not found");
     } finally {
       setLoading(false);
     }

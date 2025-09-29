@@ -122,7 +122,7 @@ export default function Navbar() {
             </div>
           </div>
           <div className="nav-center">
-            <h1 className="logo">MISTER X</h1>
+            <h1 className="logo" ><img style={{width:'40px'}} src="logo.png" alt="logo" /></h1>
             <SearchBar setSearchQuery={setSearchQuery} />
           </div>
           <div className="nav-right">

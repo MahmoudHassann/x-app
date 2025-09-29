@@ -1,13 +1,16 @@
-import { useSelector } from "react-redux";
-// import products from "../json/products";
+import { useSelector, useDispatch } from "react-redux";
 import FilterPanel from "../components/FilterPanel/FilterPanel";
 import Product from "../components/Shop/Product";
 import TopBar from "../components/TopBar";
-import { useProductFiltering } from "../hooks/useProductFiltering";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { resetFilters, setCategory } from "../redux/slices/filter-slice";
 
 export default function Shop() {
+
+  
+  const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.layout.navOpen);
   const filters = useSelector((state) => state.filters);
   const [products, setProducts] = useState([]);
@@ -15,45 +18,75 @@ export default function Shop() {
   const [pageNumber, setPageNumber] = useState(1);
   const [sortDirection, setSortDirection] = useState("desc");
   const [sortKey, setSortKey] = useState("");
-  const { filteredProducts, loading } = useProductFiltering(products);
 
-  const getProducts = async (filters) => {
- 
-  let { sortedBy, ...cleanFilters } = filters;
-  let sortDir = sortDirection;
-
- 
-  switch (sortedBy) {
-    case "Low to High":
-      sortedBy = "price";
-      sortDir = "asc";
-      setSortDirection(sortDir);
-      break;
-
-    case "High to Low":
-      sortedBy = "price";
-      sortDir = "desc";
-      setSortDirection(sortDir);
-      break;
-
-    default:
-      sortDir = "desc";
-      setSortDirection(sortDir);
-      break;
-  }
-
-   const response = await axios.post(
-    `https://mister-x-store.com/mister_x_site/public/api/products/${sortDir}/${sortedBy}/${pageNumber}/${pageSize}`,
-    { filters: cleanFilters }
-  );
-
-   setProducts(response.data.data);
-};
-
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const catId = queryParams.get("cat");
+  const catIdStr = catId ? String(catId) : null;
 
   useEffect(() => {
-    getProducts(filters);
-  }, [filters]);
+    if (!catIdStr) return;
+    const current = (filters.category || []).map(String);
+    if (!current.includes(catIdStr)) {
+      dispatch(setCategory([...current, catIdStr]));
+    }
+ 
+  }, [catIdStr]);
+
+  const mergedFilters = useMemo(() => {
+    const f = { ...filters };
+    const current = (f.category || []).map(String);
+    if (catIdStr && !current.includes(catIdStr)) {
+      f.category = [...current, catIdStr];
+    } else {
+      f.category = current;
+    }
+    return f;
+  }, [filters, catIdStr]);
+
+  const getProducts = async (filtersArg) => {
+    let { sortedBy, ...cleanFilters } = filtersArg || {};
+    let sortDir = sortDirection;
+
+    switch (sortedBy) {
+      case "Low to High":
+        sortedBy = "price";
+        sortDir = "asc";
+        break;
+      case "High to Low":
+        sortedBy = "price";
+        sortDir = "desc";
+        break;
+      default:
+        sortedBy = sortedBy || "";
+        sortDir = "desc";
+        break;
+    }
+
+    setSortDirection(sortDir);
+
+    if (cleanFilters?.category && Array.isArray(cleanFilters.category)) {
+      cleanFilters.category = cleanFilters.category.map(String);
+    }
+
+    const response = await axios.post(
+      `https://mister-x-store.com/mister_x_site/public/api/products/${sortDir}/${sortedBy}/${pageNumber}/${pageSize}`,
+      { filters: cleanFilters }
+    );
+
+    setProducts(response.data.data || []);
+  };
+
+  useEffect(() => {
+    getProducts(mergedFilters);
+  
+  }, [mergedFilters, pageNumber, pageSize]);
+
+  useEffect(() => {
+    return () => {
+      resetFilters();
+    };
+  }, []);
 
   return (
     <main className="shop-all">
@@ -90,7 +123,7 @@ export default function Shop() {
         </header>
 
         <section className="products_wrapper">
-          <FilterPanel filters={filters} />
+          <FilterPanel filters={mergedFilters} />
           <div className="products">
             <div className="container-fluid">
               <div className="row">

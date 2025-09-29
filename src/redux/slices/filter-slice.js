@@ -2,12 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   priceRange: [0, Infinity],
- 
- 
+
   sizes: [],
- 
+
   category: [],
- 
+
   sortedBy: "New",
 };
 
@@ -39,9 +38,8 @@ const filterSlice = createSlice({
     setSorted: (state, action) => {
       state.sortedBy = action.payload;
     },
-    resetFilters: (state) => {
-      console.log(initialState, "initialState");
-      return initialState;
+    resetFilters: () => {
+      return { ...initialState };
     },
   },
 });

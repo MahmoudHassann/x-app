@@ -4,11 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./ProductGallery.css";
 import ImageWithLoader from "../components/Loading/ImageWithLoader";
 
-const ProductGallery = ({ images, selectedImage }) => {
+const ProductGallery = ({ images, selectedImage, onChangeMain }) => {
   const [currentImage, setCurrentImage] = useState(selectedImage);
   const [isZoomed, setIsZoomed] = useState(false);
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
   const [showCursor, setShowCursor] = useState(false);
+
+  useEffect(() => {
+    setCurrentImage(selectedImage);
+  }, [selectedImage]);
 
   const handleMouseMove = (e) => {
     const { left, top, width, height } = e.target.getBoundingClientRect();
@@ -18,20 +22,15 @@ const ProductGallery = ({ images, selectedImage }) => {
     setCursorPosition({ x: e.clientX, y: e.clientY });
   };
 
-  useEffect(() => {
-    setCurrentImage(selectedImage);
-  }, [selectedImage]);
+  const handleClick = () => setIsZoomed(!isZoomed);
+  const handleMouseEnter = () => setShowCursor(true);
+  const handleMouseLeave = () => setShowCursor(false);
 
-  const handleClick = () => {
-    setIsZoomed(!isZoomed);
-  };
-  const handleMouseEnter = () => {
-    setShowCursor(true);
+  const handleThumbClick = (src) => {
+    setCurrentImage(src);
+    onChangeMain?.(src);
   };
 
-  const handleMouseLeave = () => {
-    setShowCursor(false);
-  };
   return (
     <div className="product-gallery">
       <div className="main-image-container">
@@ -47,39 +46,33 @@ const ProductGallery = ({ images, selectedImage }) => {
         {showCursor && (
           <div
             className="custom-cursor"
-            style={{
-              top: cursorPosition.y,
-              left: cursorPosition.x,
-            }}
+            style={{ top: cursorPosition.y, left: cursorPosition.x }}
           >
             <i className={`fa-solid ${isZoomed ? "fa-minus" : "fa-plus"}`}></i>
           </div>
         )}
       </div>
+
       <div className="thumbnails">
-        {images.map((image, index) => (
-          <img
-            key={index}
-            src={image.thumbnail}
-            alt=""
-            onClick={() => setCurrentImage(image.large)}
-            className={`thumbnail ${
-              currentImage === image.large ? "selected" : ""
-            }`}
-          />
-        ))}
+        {Array.isArray(images) &&
+          images.map((src, idx) => (
+            <img
+              key={idx}
+              src={src}
+              alt=""
+              onClick={() => handleThumbClick(src)}
+              className="thumbnail"
+            />
+          ))}
       </div>
     </div>
   );
 };
 
 ProductGallery.propTypes = {
-  images: PropTypes.arrayOf(
-    PropTypes.shape({
-      thumbnail: PropTypes.string.isRequired,
-      large: PropTypes.string.isRequired,
-    })
-  ).isRequired,
+  images: PropTypes.arrayOf(PropTypes.string).isRequired, // array of URLs
+  selectedImage: PropTypes.string,
+  onChangeMain: PropTypes.func,
 };
 
 export default ProductGallery;
