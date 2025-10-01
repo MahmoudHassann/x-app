@@ -190,8 +190,8 @@ export default function Navbar() {
                           <span>- checkout now to make them yours</span>
                         </div>
                         <ul className="cart_product">
-                          {cartData?.map((productCart) => (
-                            <li className="product">
+                          {cartData?.map((productCart,index) => (
+                            <li className="product" key={index}>
                               <span
                                 onClick={() => {
                                   if (
@@ -218,7 +218,7 @@ export default function Navbar() {
                                 }}
                                 className="remove_product"
                               >
-                                <i class="fa-solid fa-xmark"></i>
+                                <i className="fa-solid fa-xmark"></i>
                               </span>
                               <div className="image">
                                 <img

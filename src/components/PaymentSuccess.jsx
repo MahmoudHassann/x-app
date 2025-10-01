@@ -48,7 +48,7 @@ const PaymentSuccess = () => {
         <div className="actions_bottom">
           <Link to={"/shop"} className={`header_link `}>
             <span className="icon_left">
-              <i class="fa-solid fa-chevron-left"></i>
+              <i className="fa-solid fa-chevron-left"></i>
             </span>
             {Resources["continueShopping"][currentLanguage]}
           </Link>

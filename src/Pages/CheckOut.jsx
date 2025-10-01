@@ -96,7 +96,7 @@ export default function CheckOut() {
               {cartData.length > 0 && (
                 <Link to={"/shop"} className={`header_link`}>
                   <span className="icon_left">
-                    <i class="fa-solid fa-chevron-left"></i>
+                    <i className="fa-solid fa-chevron-left"></i>
                   </span>
                   {Resources["continueShopping"][currentLanguage]}
                 </Link>
@@ -111,7 +111,7 @@ export default function CheckOut() {
                 >
                   {Resources["proceedToCheckout"][currentLanguage]}
                   <span className="icon_right">
-                    <i class="fa-solid fa-chevron-right"></i>
+                    <i className="fa-solid fa-chevron-right"></i>
                   </span>
                 </div>
               )}
@@ -122,7 +122,7 @@ export default function CheckOut() {
                   <div className="grid_wrap">
                     <div className="not_reserved">
                       <span className="icon_left">
-                        <i class="fa-solid fa-circle-exclamation"></i>
+                        <i className="fa-solid fa-circle-exclamation"></i>
                       </span>
                       <span className="bold">
                         {Resources["itemsNotReserved"][currentLanguage]}
@@ -224,7 +224,7 @@ export default function CheckOut() {
                       <ul className="points">
                         <li>
                           <span className="icon_left">
-                            <i class="fa-solid fa-check"></i>
+                            <i className="fa-solid fa-check"></i>
                           </span>
                           <p>
                             {Resources["ordersCanBeDelivered"][currentLanguage]}
@@ -245,7 +245,7 @@ export default function CheckOut() {
                         <li className="is_free">
                           <p>
                             <span className="icon_left">
-                              <i class="fa-solid fa-check"></i>
+                              <i className="fa-solid fa-check"></i>
                             </span>
                             {Resources["free60DayReturns"][currentLanguage]}
                           </p>

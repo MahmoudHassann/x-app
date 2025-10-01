@@ -191,7 +191,7 @@ export default function ProductDetails() {
         </>
       );
     } else {
-      setLowStockMessage("");
+      setLowStockMessage(<><span className="stock-available">Stock Available <strong>{info.qty}</strong> for size <strong>{size}</strong></span></>);
     }
   }
 

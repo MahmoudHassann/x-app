@@ -1,41 +1,52 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Footer() {
   const isOpen = useSelector((state) => state.layout.navOpen);
+  const [categories, setCategories] = useState([]);
+  const getCategories = async () => {
+    try {
+      const response = await axios.get(
+        "https://mister-x-store.com/mister_x_site/public/api/categories"
+      );
+      setCategories(response.data?.data ?? []);
+    } catch (error) {
+      console.log("error");
+    }
+  };
+  useEffect(() => {
+    getCategories();
+  }, []);
+
+  // useEffect(() => {
+  //   // Mount : When Component open
+
+  //   return () => {
+  //     // Unmount : When Component close
+  //   }
+  // }, [ ])
 
   return (
     <footer>
       <div className={`custom-container ${isOpen ? "nav-open" : ""}`}>
         <div className="linklist-panel">
           <div className="linklist">
-            <h2>Outfits</h2>
+            <h2>Links</h2>
+
             <div className="linklist-list">
-              <a href="#">About G-Star</a>
-              <a href="#">Jeans Fit Guide</a>
-              <a href="#">Careers</a>
-              <a href="#">Coroprate Responsibility</a>
-              <a href="#">GSRD Foundation</a>
-              <a href="#">G-Star Rewear</a>
-              <a href="#">RAW Certified Tailors</a>
-              <a href="#">Club-G</a>
-              <a href="#">Newsletter</a>
-              <a href="#">Gift Cards</a>
-              <a href="#">Press Room</a>
+              {categories.map((cat) => (
+                <a href={`shop?cat=${cat.cat_id}`}>{cat.cat_name}</a>
+              ))}
             </div>
           </div>
           <div className="linklist">
             <h2>INFO</h2>
             <div className="linklist-list">
-              <a href="#">Track my order</a>
-              <a href="#">FAQ</a>
-              <a href="#">Terms & Conditions</a>
               <a href="#">Privacy Policy</a>
-              <a href="#">Cookie Statement</a>
+              <a href="#">Track my order</a>
+              <a href="#">Terms & Conditions</a>
               <a href="#">Website terms of use</a>
-              <a href="#">Brand Protection</a>
-              <a href="#">Sitemap</a>
-              <a href="#">Complaints</a>
-              <a href="#">Unidays</a>
             </div>
           </div>
           <div className="linklist">
@@ -60,7 +71,7 @@ export default function Footer() {
                   aria-expanded="false"
                   aria-controls="flush-collapseOne"
                 >
-                  mister-x
+                  Mister-x
                 </button>
               </h2>
               <div
@@ -105,16 +116,10 @@ export default function Footer() {
               >
                 <div className="accordion-body">
                   <div className="linklist-list">
-                    <a href="#">Track my order</a>
-                    <a href="#">FAQ</a>
-                    <a href="#">Terms & Conditions</a>
                     <a href="#">Privacy Policy</a>
-                    <a href="#">Cookie Statement</a>
+                    <a href="#">Track my order</a>
+                    <a href="#">Terms & Conditions</a>
                     <a href="#">Website terms of use</a>
-                    <a href="#">Brand Protection</a>
-                    <a href="#">Sitemap</a>
-                    <a href="#">Complaints</a>
-                    <a href="#">Unidays</a>
                   </div>
                 </div>
               </div>
@@ -148,32 +153,6 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        <ul className="links">
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-          <li>
-            <a href="#"></a>
-          </li>
-        </ul>
       </div>
     </footer>
   );
