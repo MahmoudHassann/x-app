@@ -63,7 +63,7 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price0to500CheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price0to500CheckBox">0-500 €</label>
+          <label htmlFor="price0to500CheckBox">0-500 EGP</label>
         </li>
         <li>
           <input
@@ -74,7 +74,7 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price500to1000CheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price500to1000CheckBox">500-1000 €</label>
+          <label htmlFor="price500to1000CheckBox">500-1000 EGP</label>
         </li>
         <li>
           <input
@@ -85,7 +85,7 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price1000to2500CheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price1000to2500CheckBox">1000-2500 €</label>
+          <label htmlFor="price1000to2500CheckBox">1000-2500 EGP</label>
         </li>
         <li>
           <input
@@ -96,7 +96,7 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price2500orMoreCheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price2500orMoreCheckBox">2500 € or more</label>
+          <label htmlFor="price2500orMoreCheckBox">2500 EGP or more</label>
         </li>
       </ul>
     </div>

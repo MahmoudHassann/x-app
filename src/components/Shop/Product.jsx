@@ -60,7 +60,7 @@ const Product = ({ product }) => {
               <div className="name">{product.product_name}</div>
               <div className="price">
                 {minPrice !== null && maxPrice !== null
-                  ? `${minPrice} - ${maxPrice} €`
+                  ? `${minPrice} - ${maxPrice} EGP`
                   : "Not Found"}
               </div>
             </div>

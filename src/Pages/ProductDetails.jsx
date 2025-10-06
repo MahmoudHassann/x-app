@@ -191,7 +191,14 @@ export default function ProductDetails() {
         </>
       );
     } else {
-      setLowStockMessage(<><span className="stock-available">Stock Available <strong>{info.qty}</strong> for size <strong>{size}</strong></span></>);
+      setLowStockMessage(
+        <>
+          <span className="stock-available">
+            Stock Available <strong>{info.qty}</strong> for size{" "}
+            <strong>{size}</strong>
+          </span>
+        </>
+      );
     }
   }
 
@@ -269,10 +276,10 @@ export default function ProductDetails() {
                       currentPriceInfo.sale > 0 ? (
                         <>
                           <span className="text-decoration-line-through me-2">
-                            €{Number(currentPriceInfo.price).toFixed(2)}
+                            EGP{Number(currentPriceInfo.price).toFixed(2)}
                           </span>
                           <span className="fw-bold">
-                            €
+                            EGP
                             {Number(currentPriceInfo.price_after_sale).toFixed(
                               2
                             )}
@@ -281,13 +288,13 @@ export default function ProductDetails() {
                         </>
                       ) : (
                         <>
-                          €{Number(currentPriceInfo.price).toFixed(2)}
+                          EGP{Number(currentPriceInfo.price).toFixed(2)}
                           <span className="vat"> including VAT</span>
                         </>
                       )
                     ) : (
                       <>
-                        €{Number(product.price || 0).toFixed(2)}{" "}
+                        EGP{Number(product.price || 0).toFixed(2)}{" "}
                         <span className="vat">including VAT</span>
                       </>
                     )}
@@ -376,12 +383,12 @@ export default function ProductDetails() {
                   </div>
 
                   <div className="location_ups">
-                    <div className="location">
+                    {/* <div className="location">
                       <div className="icon">
                         <i className="fa-solid fa-location-dot"></i>
                       </div>
                       <p>Find in local store</p>
-                    </div>
+                    </div> */}
                     <div className="ups">
                       <div className="wrap">
                         <div className="icon">
@@ -408,7 +415,7 @@ export default function ProductDetails() {
                             aria-expanded="false"
                             aria-controls="flush-collapseDstaq"
                           >
-                            D-staq
+                            Available branches
                           </button>
                         </h2>
                         <div
@@ -418,147 +425,42 @@ export default function ProductDetails() {
                           data-bs-parent="#accordionFlushProductDetails"
                         >
                           <div className="accordion-body">
-                            <SvgPant />
-                            <p className="text-accordion">
-                              The D-Staq pant is a simplified version of the
-                              Staq pant...
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="accordion-item">
-                        <h2 className="accordion-header" id="flush-material">
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseMaterial"
-                            aria-expanded="false"
-                            aria-controls="flush-collapseMaterial"
-                          >
-                            Material
-                          </button>
-                        </h2>
-                        <div
-                          id="flush-collapseMaterial"
-                          className="accordion-collapse collapse"
-                          aria-labelledby="flush-material"
-                          data-bs-parent="#accordionFlushProductDetails"
-                        >
-                          <div className="accordion-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit...
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="accordion-item">
-                        <h2 className="accordion-header" id="flush-features">
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseFeatures"
-                            aria-expanded="false"
-                            aria-controls="flush-collapseFeatures"
-                          >
-                            Features
-                          </button>
-                        </h2>
-                        <div
-                          id="flush-collapseFeatures"
-                          className="accordion-collapse collapse"
-                          aria-labelledby="flush-features"
-                          data-bs-parent="#accordionFlushProductDetails"
-                        >
-                          <div className="accordion-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit...
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="accordion-item">
-                        <h2
-                          className="accordion-header"
-                          id="flush-responsibleMaterialsRanking"
-                        >
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseResponsibleMaterialsRanking"
-                            aria-expanded="false"
-                            aria-controls="flush-collapseResponsibleMaterialsRanking"
-                          >
-                            Responsible Materials Ranking
-                          </button>
-                        </h2>
-                        <div
-                          id="flush-collapseResponsibleMaterialsRanking"
-                          className="accordion-collapse collapse"
-                          aria-labelledby="flush-responsibleMaterialsRanking"
-                          data-bs-parent="#accordionFlushProductDetails"
-                        >
-                          <div className="accordion-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit...
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="accordion-item">
-                        <h2 className="accordion-header" id="flush-sizeAndFit">
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseSizeAndFit"
-                            aria-expanded="false"
-                            aria-controls="flush-collapseSizeAndFit"
-                          >
-                            Size & Fit
-                          </button>
-                        </h2>
-                        <div
-                          id="flush-collapseSizeAndFit"
-                          className="accordion-collapse collapse"
-                          aria-labelledby="flush-sizeAndFit"
-                          data-bs-parent="#accordionFlushProductDetails"
-                        >
-                          <div className="accordion-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit...
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="accordion-item">
-                        <h2
-                          className="accordion-header"
-                          id="flush-descriptionAndCare"
-                        >
-                          <button
-                            className="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#flush-collapseDescriptionAndCare"
-                            aria-expanded="false"
-                            aria-controls="flush-collapseDescriptionAndCare"
-                          >
-                            Description & Care
-                          </button>
-                        </h2>
-                        <div
-                          id="flush-collapseDescriptionAndCare"
-                          className="accordion-collapse collapse"
-                          aria-labelledby="flush-descriptionAndCare"
-                          data-bs-parent="#accordionFlushProductDetails"
-                        >
-                          <div className="accordion-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit...
+                            {currentPanel &&
+                              Object.keys(currentPanel.stockBySize || {}).map(
+                                (size, index) => {
+                                  const info = currentPanel.stockBySize[size];
+                                  const isAvailable = (info?.qty || 0) > 0;
+                                  return (
+                                    <li
+                                      key={index}
+                                      className={`size-item ${
+                                        selectedSize === size
+                                          ? "selected-size"
+                                          : ""
+                                      } ${!isAvailable ? "disabled-size" : ""}`}
+                                      onClick={() =>
+                                        isAvailable && handleSizeChange(size)
+                                      }
+                                      aria-disabled={!isAvailable}
+                                      title={
+                                        isAvailable
+                                          ? `Available at ${info.branch} - Qty: ${info.qty}`
+                                          : "Out of stock"
+                                      }
+                                    >
+                                      <span className="size-label">{size}</span>
+                                      {isAvailable && (
+                                        <span className="branch-info">
+                                          {info.branch}
+                                          <span className="qty-badge">
+                                            {info.qty}
+                                          </span>
+                                        </span>
+                                      )}
+                                    </li>
+                                  );
+                                }
+                              )}
                           </div>
                         </div>
                       </div>
