@@ -76,7 +76,7 @@
     "ar": "الإجمالي شامل ضريبة القيمة المضافة"
   },
   "youSave": {
-    "en": "You save € 249,96 with this order",
+    "en": "You save EGP 249,96 with this order",
     "ar": "لقد وفرت 249,96 يورو مع هذا الطلب"
   },
   "total": {
@@ -98,5 +98,9 @@
   "60DayReturns": {
     "en": "Free 60 day returns",
     "ar": "إرجاع مجاني لمدة 60 يومًا"
+  },
+  "FindAStores": {
+    "en": "Find a Store",
+    "ar": "البحث عن متجر"
   }
 }

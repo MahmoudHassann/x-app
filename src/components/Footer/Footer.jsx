@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const isOpen = useSelector((state) => state.layout.navOpen);
@@ -53,9 +54,9 @@ export default function Footer() {
             <h2>STORE LOCATOR</h2>
 
             <div className="linklist-list">
-              <a className="find-store" href="#">
+              <Link className="find-store" to="stores">
                 find a store
-              </a>
+              </Link>
             </div>
           </div>
         </div>

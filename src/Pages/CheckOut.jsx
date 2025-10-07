@@ -191,7 +191,7 @@ export default function CheckOut() {
                                 </select>
                               </div>
                               <p className="price">
-                                €{" "}
+                                EGP{" "}
                                 {calculateTotalPricePerProject(productCheckOut)}
                               </p>
                             </div>
@@ -208,7 +208,7 @@ export default function CheckOut() {
                         <p className="name">
                           {Resources["subtotal"][currentLanguage]}
                         </p>
-                        <p className="data">€ {subTotal}</p>
+                        <p className="data">EGP {subTotal}</p>
                       </div>
                       <div className="shipping">
                         <div className="name">
@@ -269,7 +269,7 @@ export default function CheckOut() {
                             {Resources["total"][currentLanguage]}{" "}
                             <span>{Resources["inclVat"][currentLanguage]}</span>
                           </p>
-                          <p className="data">€ {totalAmount}</p>
+                          <p className="data">EGP {totalAmount}</p>
                         </div>
                       </div>
                       <div className="action_btns">

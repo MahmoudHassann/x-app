@@ -12,6 +12,7 @@ import PaymentSuccess from "./components/PaymentSuccess.jsx";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Shop = lazy(() => import("./Pages/Shop"));
+const Stores = lazy(() => import("./Pages/Stores"));
 
 const Register = lazy(() => import("./components/Auth/Register"));
 const ProductDetails = lazy(() => import("./Pages/ProductDetails"));
@@ -26,6 +27,7 @@ function App() {
       children: [
         { path: "", element: <Home /> },
         { path: "shop", element: <Shop /> },
+        { path: "stores", element: <Stores /> },
         { path: "search", element: <SearchPage /> },
         {
           path: "payment-callback",
