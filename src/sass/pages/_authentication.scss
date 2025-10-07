@@ -35,7 +35,15 @@
   border: 2px solid #303030;
   margin-top: 15px;
 }
+.form-parent textarea {
+  border-radius: 0;
+  border: 2px solid #303030;
+  margin-top: 15px;
+}
 .form-parent input.is-invalid {
+  background-color: #efcaa1;
+}
+.form-parent textarea.is-invalid {
   background-color: #efcaa1;
 }
 .form-parent .form-floating label:after {

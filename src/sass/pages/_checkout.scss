@@ -1,7 +1,7 @@
 @import "../abstracts/mixins";
 .checkout_cart {
   background-color: #f6f6f6;
-  height: 100vh;
+  min-height: 100vh;
   .container {
     padding: 0 80px;
     @include media(small) {
