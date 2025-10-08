@@ -1,8 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSearchQuery } from "../../redux/slices/search-slice";
+import axios from "axios";
+
 const keywords = ["Nifous", "Nifous 22", "Carg", "Jean", "Mah"];
+
 const getProductsWithColors = (products) => {
   return products.flatMap((product) =>
     product.colorPanel.map((panel) => ({
@@ -15,29 +18,64 @@ const getProductsWithColors = (products) => {
     }))
   );
 };
+
 export default function SearchBar() {
   const [showResult, setShowResult] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const inputRef = useRef(null);
+  const debounceTimer = useRef(null);
 
-  const filteredProducts = useSelector(
-    (state) => state.search.searchProducts || []
-  );
-  const [searchResults, setSearchResults] = useState([]);
-  useEffect(() => {
-    if (inputValue) {
-      const productsWithColors = getProductsWithColors(filteredProducts);
 
-      const results = productsWithColors.filter((product) =>
-        product.name.toLowerCase().includes(inputValue.toLowerCase())
+  const fetchProducts = async (keyword) => {
+    if (!keyword.trim()) {
+      setSearchResults([]);
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `https://mister-x-store.com/mister_x_site/public/api/products/1/20`,
+        { 
+          keyword: keyword 
+        }
       );
-      setSearchResults(results);
+
+      
+      const productsWithColors = getProductsWithColors(response.data.data || []);
+      setSearchResults(productsWithColors);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      setSearchResults([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    if (debounceTimer.current) {
+      clearTimeout(debounceTimer.current);
+    }
+
+    if (inputValue) {
+      debounceTimer.current = setTimeout(() => {
+        fetchProducts(inputValue);
+      }, 500);
     } else {
       setSearchResults([]);
     }
-  }, [inputValue, filteredProducts]);
+
+    return () => {
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current);
+      }
+    };
+  }, [inputValue]);
+
   const handleFocus = () => {
     if (inputValue) {
       setShowResult(true);
@@ -47,6 +85,7 @@ export default function SearchBar() {
   const handleBlur = () => {
     setShowResult(false);
   };
+
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
     dispatch(setSearchQuery(e.target.value));
@@ -60,16 +99,17 @@ export default function SearchBar() {
       inputRef.current.blur();
     }
   };
+
   const handleResultClick = (product) => {
     const productUrl = `/product/${product.id}?color=${encodeURIComponent(
       product.mainImage.color
     )}`;
 
     navigate(`/shop${productUrl}`);
-
     inputRef.current.blur();
     setShowResult(false);
   };
+
   const handleKeywordClick = (keyword) => {
     setInputValue(keyword);
     dispatch(setSearchQuery(keyword));
@@ -106,36 +146,48 @@ export default function SearchBar() {
         ref={inputRef}
       />
       
-      {inputValue && combinedResults.length > 0 && showResult && (
+      {inputValue && showResult && (
         <ul className="search-results">
-          {combinedResults.map((item) => (
-            <li
-              key={item.isKeyword ? item.value : item.value.variantId}
-              onMouseDown={(e) => e.preventDefault()}
-              onClick={() =>
-                item.isKeyword
-                  ? handleKeywordClick(item.value)
-                  : handleResultClick(item.value)
-              }
-            >
-              {item.isKeyword ? (
-                <p className="keyword">{item.value}</p>
-              ) : (
-                <div className="search_product">
-                  <div className="image">
-                    <img src={item.value.mainImage.image} alt="" />
-                  </div>
-                  <div className="details">
-                    <div className="left">
-                      <p className="name">{item.value.name}</p>
-                      <p className="color">{item.value.mainImage.color}</p>
-                    </div>
-                    <p className="price">E{item.value.price}</p>
-                  </div>
-                </div>
-              )}
+          {loading && (
+            <li className="loading">
+              <p>جاري البحث...</p>
             </li>
-          ))}
+          )}
+          {!loading && combinedResults.length > 0 && (
+            combinedResults.map((item) => (
+              <li
+                key={item.isKeyword ? item.value : item.value.variantId}
+                onMouseDown={(e) => e.preventDefault()}
+                onClick={() =>
+                  item.isKeyword
+                    ? handleKeywordClick(item.value)
+                    : handleResultClick(item.value)
+                }
+              >
+                {item.isKeyword ? (
+                  <p className="keyword">{item.value}</p>
+                ) : (
+                  <div className="search_product">
+                    <div className="image">
+                      <img src={item.value.mainImage.image} alt="" />
+                    </div>
+                    <div className="details">
+                      <div className="left">
+                        <p className="name">{item.value.name}</p>
+                        <p className="color">{item.value.mainImage.color}</p>
+                      </div>
+                      <p className="price">E{item.value.price}</p>
+                    </div>
+                  </div>
+                )}
+              </li>
+            ))
+          )}
+          {!loading && combinedResults.length === 0 && (
+            <li className="no-results">
+              <p>No Result Found</p>
+            </li>
+          )}
         </ul>
       )}
     </div>

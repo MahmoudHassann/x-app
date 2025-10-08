@@ -16,11 +16,13 @@ export default function Stores() {
     const response = await axios.get(
       `https://mister-x-store.com/mister_x_site/public/api/branches`
     );
+     
     if (response && response.data.data) {
       setStores(response.data.data);
       setIsLoading(false);
+    } else {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   useEffect(() => {

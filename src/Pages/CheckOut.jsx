@@ -77,7 +77,7 @@ export default function CheckOut() {
       const sizeData = selectedColorData?.stockBySize[product.selectedSize];
 
       return {
-        product_color_id: selectedColorData?.id || product.id,
+        product_color_id: product.product_color_id,
         size_id: product.selectedSize,
         order_qty: product.quantity,
       };
@@ -123,6 +123,7 @@ export default function CheckOut() {
   return (
     <div className="checkout_cart">
       {isLoading && <MainLoading />}
+      {console.log(cartData,'cartData')}
       <div className={`custom-container ${isOpen ? "nav-open" : ""}`}>
         <TopBar isDark={true} />
 

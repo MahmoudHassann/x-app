@@ -65,7 +65,7 @@
         flex-wrap: wrap;
         li {
           border: 1px solid #000;
-          width: 40px;
+          min-width: 40px;
           height: 40px;
           display: flex;
           align-items: center;
