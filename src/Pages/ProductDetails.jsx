@@ -28,6 +28,7 @@ function normalizeProduct(res) {
 
     return {
       color: c.color_name,
+      product_color_id: c.product_color_id,
       colorImage: IMG_BASE + c.thumbnail,
       main_img: IMG_BASE + c.main_img,
       hover_img: IMG_BASE + c.hover_img,
@@ -97,6 +98,7 @@ export default function ProductDetails() {
     (async () => {
       try {
         const response = await fetchProduct();
+        console.log(response, "response");
         const normalized = normalizeProduct(response);
         if (ignore) return;
 
@@ -235,13 +237,14 @@ export default function ProductDetails() {
       setShowAnimation(false);
       setTimeout(() => setShowAnimation(true), 10);
     }
-
+    console.log(currentPanel,'currentPanelcurrentPanel')
     dispatch(
       addItem({
         ...product,
         selectedColor,
         selectedSize,
         unitPrice: info.price_after_sale ?? info.price,
+        product_color_id: currentPanel.product_color_id,
         price: info.price,
         sale: info.sale,
         price_after_sale: info.price_after_sale ?? info.price,
