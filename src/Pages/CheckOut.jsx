@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Resources from "../locales/Resources.json";
 import TopBar from "../components/TopBar";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import { updateQuantity } from "../redux/slices/cart-slice";
+import { clearCart, updateQuantity } from "../redux/slices/cart-slice";
 import { MainLoading } from "../components/Loading/MainLoading.jsx";
 import { notifySuccess } from "../dependencies/Notification.js";
-import axios from "axios";
 
-export default function CheckOut() {
+import Api from "../dependencies/instanceAxios.js";
+
+export default function CheckOut(props) {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,25 +24,29 @@ export default function CheckOut() {
     ? localStorage.getItem("language")
     : "en";
   let dispatch = useDispatch();
+  let navigate = useNavigate();
 
-  const CheckoutSchema = Yup.object().shape({
+  const validationSchema = Yup.object({
     c_name: Yup.string()
-      .min(3, "Name must be at least 3 characters")
-      .max(50, "Name must be less than 50 characters")
-      .required("* Name is required"),
+      .min(3, Resources.nameMin[currentLanguage])
+      .max(50, Resources.nameMax[currentLanguage])
+      .required(Resources.nameRequired[currentLanguage]),
+
     c_number1: Yup.string()
-      .matches(/^[0-9]+$/, "Phone number must contain only numbers")
-      .min(11, "Phone number must be at least 11 digits")
-      .max(15, "Phone number must be less than 15 digits")
-      .required("* Phone number is required"),
+      .matches(/^[0-9]+$/, Resources.phoneOnlyNumbers[currentLanguage])
+      .min(11, Resources.phoneMin[currentLanguage])
+      .max(15, Resources.phoneMax[currentLanguage])
+      .required(Resources.phoneRequired[currentLanguage]),
+
     c_adress: Yup.string()
-      .min(10, "Address must be at least 10 characters")
-      .max(200, "Address must be less than 200 characters")
-      .required("* Address is required"),
+      .min(10, Resources.addressMin[currentLanguage])
+      .max(200, Resources.addressMax[currentLanguage])
+      .required(Resources.addressRequired[currentLanguage]),
+
     date_of_birth: Yup.date()
-      .max(new Date(), "Date of birth cannot be in the future")
-      .required("* Date of birth is required")
-      .test("age", "You must be at least 16 years old", function (value) {
+      .max(new Date(), Resources.dobMax[currentLanguage])
+      .required(Resources.dobRequired[currentLanguage])
+      .test("age", Resources.dobMinAge[currentLanguage], function (value) {
         const cutoff = new Date();
         cutoff.setFullYear(cutoff.getFullYear() - 16);
         return value <= cutoff;
@@ -69,16 +74,17 @@ export default function CheckOut() {
   };
 
   const prepareOrderData = (formValues) => {
+    console.log(cartData, "cartData");
     const items = cartData.map((product) => {
       const selectedColorData = product.colorPanel.find(
         (color) => color.color === product.selectedColor
       );
 
       const sizeData = selectedColorData?.stockBySize[product.selectedSize];
-      console.log(product,'product')
+
       return {
         product_color_id: product.product_color_id,
-        size_id: product.selectedSize,
+        size_id: product.selectedSizeId,
         order_qty: product.quantity,
       };
     });
@@ -99,12 +105,21 @@ export default function CheckOut() {
     try {
       const orderData = prepareOrderData(values);
       console.log("Order Data:", orderData);
-      const response = await axios.post(
-        `https://mister-x-store.com/mister_x_site/public/api/order`,
-        orderData
-      );
+
+      const response = await Api.post(`order`, orderData);
+      if (response && response.status === 200) {
+        notifySuccess("Order submitted successfully!");
+
+        const oldOrderDetails =
+          JSON.parse(localStorage.getItem("orderDetails")) || [];
+
+        const newOrderDetails = [...cartData];
+
+        localStorage.setItem("orderDetails", JSON.stringify(newOrderDetails));
+        dispatch(clearCart());
+        navigate("/checkout/order-details");
+      }
       console.log(response, "response");
-      notifySuccess("Order submitted successfully!");
     } catch (error) {
       console.error("Order submission error:", error);
       {
@@ -123,7 +138,7 @@ export default function CheckOut() {
   return (
     <div className="checkout_cart">
       {isLoading && <MainLoading />}
-      {console.log(cartData,'cartData')}
+      {console.log(cartData, "cartData")}
       <div className={`custom-container ${isOpen ? "nav-open" : ""}`}>
         <TopBar isDark={true} />
 
@@ -135,7 +150,12 @@ export default function CheckOut() {
               {cartData.length > 0 && (
                 <Link to={"/shop"} className={`header_link`}>
                   <span className="icon_left">
-                    <i className="fa-solid fa-chevron-left"></i>
+                    {currentLanguage === "ar" && (
+                      <i className="fa-solid fa-chevron-right"></i>
+                    )}
+                    {currentLanguage === "en" && (
+                      <i className="fa-solid fa-chevron-left"></i>
+                    )}
                   </span>
                   {Resources["continueShopping"][currentLanguage]}
                 </Link>
@@ -190,7 +210,8 @@ export default function CheckOut() {
                                 {productCheckOut.name}
                               </p>
                               <p className="color_and_size">
-                                Size: {productCheckOut.selectedSize} |{" "}
+                                {Resources["size"][currentLanguage]}:{" "}
+                                {productCheckOut.selectedSize} |{" "}
                                 {productCheckOut.selectedColor}
                               </p>
                             </div>
@@ -223,7 +244,7 @@ export default function CheckOut() {
                                 </select>
                               </div>
                               <p className="price">
-                                EGP{" "}
+                                {Resources["EGP"][currentLanguage]}
                                 {calculateTotalPricePerProject(productCheckOut)}
                               </p>
                             </div>
@@ -244,7 +265,7 @@ export default function CheckOut() {
                           c_adress: "",
                           date_of_birth: "",
                         }}
-                        validationSchema={CheckoutSchema}
+                        validationSchema={validationSchema}
                         onSubmit={handleSubmitOrder}
                       >
                         {({ errors, touched, isSubmitting }) => (
@@ -386,15 +407,25 @@ export default function CheckOut() {
                               <p className="name">
                                 {Resources["subtotal"][currentLanguage]}
                               </p>
-                              <p className="data">EGP {subTotal}</p>
+                              <p className="data">
+                                {Resources["EGP"][currentLanguage]} {subTotal}
+                              </p>
                             </div>
 
                             <div className="shipping">
                               <div className="name">
                                 {Resources["shipping"][currentLanguage]}
                               </div>
+                              {console.log(cartData, "cartData")}
                               <div className="data">
-                                {Resources["free"][currentLanguage]}
+                                {!cartData[0].shipping ? (
+                                  <p>{Resources["free"][currentLanguage]}</p>
+                                ) : (
+                                  <p>
+                                    {Resources["EGP"][currentLanguage]}{" "}
+                                    {cartData[0].shipping}
+                                  </p>
+                                )}
                               </div>
                             </div>
 
@@ -405,45 +436,61 @@ export default function CheckOut() {
                                 </span>
                                 <p>
                                   {
-                                    Resources["ordersCanBeDelivered"][
+                                    Resources["afterOrderConfirmed"][
                                       currentLanguage
                                     ]
                                   }
                                 </p>
                               </li>
+
+                              <li className="column">
+                                <p>
+                                  {
+                                    Resources["availableShippingMethods"][
+                                      currentLanguage
+                                    ]
+                                  }
+                                </p>
+                                <ul className="sub_points">
+                                  <li>
+                                    {
+                                      Resources["amanaExpressDelivery"][
+                                        currentLanguage
+                                      ]
+                                    }
+                                  </li>
+                                  <li>
+                                    {
+                                      Resources["deliveryAgentService"][
+                                        currentLanguage
+                                      ]
+                                    }
+                                  </li>
+                                </ul>
+                              </li>
+
                               <li>
+                                <span className="icon_left">
+                                  <i className="fa-solid fa-check"></i>
+                                </span>
                                 <p>
-                                  <span className="icon_left">
-                                    <i className="fa-solid fa-check"></i>
-                                  </span>
                                   {
-                                    Resources["oneToTwoDaysDeliveryTime"][
+                                    Resources["trustedShippingTeam"][
                                       currentLanguage
                                     ]
                                   }
                                 </p>
                               </li>
+
                               <li className="is_free">
+                                <span className="icon_left">
+                                  <i className="fa-solid fa-check"></i>
+                                </span>
                                 <p>
-                                  <span className="icon_left">
-                                    <i className="fa-solid fa-check"></i>
-                                  </span>
                                   {
-                                    Resources["free60DayReturns"][
+                                    Resources["shipmentTrackingNotification"][
                                       currentLanguage
                                     ]
-                                  }
-                                </p>
-                              </li>
-                              <li className="is_return">
-                                <p>
-                                  <span className="icon_left">
-                                    <i className="fa-solid fa-check"></i>
-                                  </span>
-                                  {
-                                    Resources[
-                                      "inStorePickupAndReturnsEligible"
-                                    ][currentLanguage]
                                   }
                                 </p>
                               </li>
@@ -457,7 +504,10 @@ export default function CheckOut() {
                                     {Resources["inclVat"][currentLanguage]}
                                   </span>
                                 </p>
-                                <p className="data">EGP {totalAmount}</p>
+                                <p className="data">
+                                  {Resources["EGP"][currentLanguage]}{" "}
+                                  {totalAmount}
+                                </p>
                               </div>
                             </div>
 
@@ -492,7 +542,12 @@ export default function CheckOut() {
                 {!cartData.length > 0 && (
                   <Link to={"/shop"} className={`header_link`}>
                     <span className="icon_left">
-                      <i className="fa-solid fa-chevron-left"></i>
+                      {currentLanguage === "ar" && (
+                        <i className="fa-solid fa-chevron-right"></i>
+                      )}
+                      {currentLanguage === "en" && (
+                        <i className="fa-solid fa-chevron-left"></i>
+                      )}
                     </span>
                     {Resources["continueShopping"][currentLanguage]}
                   </Link>

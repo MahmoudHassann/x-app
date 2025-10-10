@@ -20,12 +20,9 @@ const FilterPanel = () => {
     <>
       <div className="head-filter-section">
         <div className="filter">
-          {console.log('hello')}
           <PriceRangeFilter />
-        
           <SizeFilter />
           <CategoryFilter />
-          
         </div>
         <SortDropdown />
       </div>

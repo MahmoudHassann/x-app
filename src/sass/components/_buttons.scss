@@ -98,3 +98,9 @@
     color: #000;
   }
 }
+
+html[dir="rtl"] {
+  .large_button {
+    flex-direction: row-reverse;
+  }
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Thumbs, Navigation, Keyboard } from "swiper/modules";
 import "./ProductGallery.css";
 
 const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
@@ -7,6 +9,9 @@ const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
   const [isZoomed, setIsZoomed] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // 👇 ثَمبز سوايبر (نحتفظ به لو أردت لاحقًا مزامنة الاتجاهين)
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   useEffect(() => {
     if (selectedImage) {
@@ -44,14 +49,9 @@ const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
     handleThumbClick(images[newIndex], newIndex);
   };
 
-  const visibleThumbs = 4;
-  const startIndex = Math.max(
-    0,
-    Math.min(currentIndex - 1, images.length - visibleThumbs)
-  );
-
   return (
     <div className="gallery-container">
+      {/* ====== Main image (كما هي) ====== */}
       <div className="main-image-wrapper">
         <div
           className={`main-image-container ${isZoomed ? "zoomed" : ""}`}
@@ -72,7 +72,6 @@ const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
                 : {}
             }
           />
-
           {!isZoomed && <div className="image-overlay"></div>}
         </div>
 
@@ -84,7 +83,7 @@ const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
           {isZoomed ? <ZoomOut size={20} /> : <ZoomIn size={20} />}
         </button>
 
-        {images.length > 1 && (
+        {images.length > 1 && !isZoomed&& (
           <>
             <button
               onClick={(e) => {
@@ -114,25 +113,25 @@ const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
         </div>
       </div>
 
-      {images.length > 1 && (
+      {images.length > 1 && !isZoomed &&  (
         <div className="thumbnails-wrapper">
-          <div className="thumbnails-container">
-            <div
-              className="thumbnails-track"
-              style={{
-                transform: `translateX(-${
-                  startIndex * (100 / visibleThumbs)
-                }%)`,
-              }}
-            >
-              {images.map((src, idx) => (
+          <Swiper
+            slidesPerView={4}
+            direction="vertical"
+            allowTouchMove={true}
+            watchSlidesProgress={true}
+            keyboard={{ enabled: true }}
+            modules={[Thumbs, Navigation, Keyboard]}
+            onSwiper={setThumbsSwiper}
+            className="thumbs-swiper"
+          >
+            {images.map((src, idx) => (
+              <SwiperSlide key={idx}>
                 <div
-                  key={idx}
                   onClick={() => handleThumbClick(src, idx)}
                   className={`thumbnail-item ${
                     currentIndex === idx ? "active" : ""
                   }`}
-                  style={{ width: `calc(${100 / visibleThumbs}% - 12px)` }}
                 >
                   <div className="thumbnail-inner">
                     <img
@@ -145,30 +144,9 @@ const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
                     )}
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {images.length > visibleThumbs && (
-            <>
-              <button
-                onClick={handlePrev}
-                disabled={startIndex === 0}
-                className="carousel-nav-btn left"
-                aria-label="Previous thumbnails"
-              >
-                <ChevronLeft size={16} />
-              </button>
-              <button
-                onClick={handleNext}
-                disabled={startIndex >= images.length - visibleThumbs}
-                className="carousel-nav-btn right"
-                aria-label="Next thumbnails"
-              >
-                <ChevronRight size={16} />
-              </button>
-            </>
-          )}
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       )}
     </div>

@@ -1,7 +1,8 @@
 .gallery-container {
   position: relative;
   width: 100%;
-  max-width: 800px;
+  height: 100%;
+  /* max-width: 800px; */
   margin: 0 auto;
   user-select: none;
 }
@@ -9,11 +10,11 @@
 .main-image-wrapper {
   position: relative;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 20px;
+  /* border-radius: 20px; */
   overflow: hidden;
   margin-bottom: 1.5rem;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/2;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -142,8 +143,7 @@
 .image-counter-badge {
   position: absolute;
   bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20px;
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(10px);
   color: white;
@@ -154,11 +154,14 @@
   z-index: 10;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   letter-spacing: 0.5px;
+  bottom: 50px;
 }
 
 .thumbnails-wrapper {
-  position: relative;
-  padding: 0 2.5rem;
+  position: absolute;
+  padding: 2.5rem;
+  top: 0;
+  left: 0;
 }
 
 .thumbnails-container {
@@ -190,20 +193,7 @@
 .thumbnail-item.active {
   opacity: 1;
   transform: translateY(-4px);
-}
-
-.thumbnail-item.active::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  border-radius: 14px;
-  padding: 3px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  z-index: 1;
-  animation: borderGlow 2s ease-in-out infinite;
+  border: 1px solid #000;
 }
 
 @keyframes borderGlow {
@@ -217,7 +207,9 @@
 }
 
 .thumbnail-inner {
-  aspect-ratio: 1;
+  /* aspect-ratio: 1; */
+  width: 100px;
+  height: 100px;
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   position: relative;
   overflow: hidden;
@@ -416,4 +408,33 @@
   background-size: 1000px 100%;
   animation: shimmer 2s infinite;
   pointer-events: none;
+}
+
+/* سوايبر الثمبز */
+.thumbs-swiper {
+  height: 90vh; /* أو أي ارتفاع مناسب */
+  padding: 10px 0;
+}
+
+.thumbs-swiper .swiper-wrapper {
+  flex-direction: column;
+}
+/* كل سليد ياخد نفس ستايل العنصر القديم */
+.thumbs-swiper .swiper-slide {
+  width: auto; /* مش مهم لأن slidesPerView = images.length */
+  padding: 0 6px;
+}
+
+/* فرمات الثمبز القديمة تظل فعّالة */
+.thumbnails-container,
+.thumbnails-track {
+  display: contents;
+} /* نعطّل التراك القديم */
+
+
+html[dir="rtl"] {
+  .image-counter-badge {
+    right: 20px;
+    left: unset;
+  }
 }

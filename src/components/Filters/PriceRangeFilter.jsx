@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setPriceRange } from "../../redux/slices/filter-slice";
-
+import Resources from "../../locales/Resources.json";
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 const PriceRangeCheckboxes = () => {
   const dispatch = useDispatch();
   const [checkedRanges, setCheckedRanges] = useState({
@@ -51,7 +54,7 @@ const PriceRangeCheckboxes = () => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Price range
+        {Resources["priceRange"][currentLanguage]}
       </button>
       <ul className="dropdown-menu parentFilterPanel">
         <li>
@@ -63,7 +66,9 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price0to500CheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price0to500CheckBox">0-500 EGP</label>
+          <label htmlFor="price0to500CheckBox">
+            0-500 {Resources["EGP"][currentLanguage]}
+          </label>
         </li>
         <li>
           <input
@@ -74,7 +79,9 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price500to1000CheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price500to1000CheckBox">500-1000 EGP</label>
+          <label htmlFor="price500to1000CheckBox">
+            500-1000 {Resources["EGP"][currentLanguage]}
+          </label>
         </li>
         <li>
           <input
@@ -85,7 +92,9 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price1000to2500CheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price1000to2500CheckBox">1000-2500 EGP</label>
+          <label htmlFor="price1000to2500CheckBox">
+            1000-2500 {Resources["EGP"][currentLanguage]}
+          </label>
         </li>
         <li>
           <input
@@ -96,7 +105,9 @@ const PriceRangeCheckboxes = () => {
             checked={checkedRanges.price2500orMoreCheckBox}
             onChange={handleCheckboxChange}
           />
-          <label htmlFor="price2500orMoreCheckBox">2500 EGP or more</label>
+          <label htmlFor="price2500orMoreCheckBox">
+            2500 {Resources["EGP"][currentLanguage]} {currentLanguage === "en" ? "or More" : "أو أكثر"}
+          </label>
         </li>
       </ul>
     </div>

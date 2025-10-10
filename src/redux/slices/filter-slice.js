@@ -32,6 +32,9 @@ const filterSlice = createSlice({
     setCategory: (state, action) => {
       state.category = action.payload;
     },
+    resetCategory: (state) => {
+      state.category = [];
+    },
     setGender: (state, action) => {
       state.gender = action.payload;
     },
@@ -54,6 +57,7 @@ export const {
   setGender,
   setSorted,
   resetFilters,
+  resetCategory,
 } = filterSlice.actions;
 
 export default filterSlice.reducer;

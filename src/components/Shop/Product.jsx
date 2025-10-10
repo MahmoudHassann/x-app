@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import Resources from "../../locales/Resources.json";
 
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 const Product = ({ product }) => {
   const productUrl = `/product/${product.product_id}`;
   const baseImageUrl = "https://mister-x-store.com/mister_x_site/public/imgs/";
- 
   const prices = product.colors.flatMap((color) =>
-    color.sizes.map((size) => size.price)
+    color.sizes.map((size) =>
+      size.price_after_sale !== undefined && size.price_after_sale !== null
+        ? size.price_after_sale
+        : size.price
+    )
   );
+  // const prices = product.colors.flatMap((color) =>
+  //   color.sizes.map((size) => size.price)
+  // );
   const [currentColor, setCurrentColor] = useState("");
   const handleColorHover = (panel) => {
     console.log(panel, "panel");
@@ -28,11 +38,11 @@ const Product = ({ product }) => {
       <div className="product">
         <div className="status-badges">
           {product.Bestsellers && (
-            <span className="best-seller">Best seller</span>
+            <span className="best-seller">{Resources["Bestsellers"][currentLanguage]}</span>
           )}
-          {product.Sale && <span className="sale">Sale</span>}
+          {product.Sale && <span className="sale">{Resources["Sale"][currentLanguage]}</span>}
         </div>
-       <Link to={`/shop${productUrl}`}>
+        <Link to={`/shop${productUrl}`}>
           <img
             src={`${baseImageUrl}${product.product_img}`}
             alt={`${product.product_name}`}
@@ -52,16 +62,20 @@ const Product = ({ product }) => {
           )}
         </Link>
         <div className="about-product">
-          {product.New && <div className="status">NEW</div>}
+          {product.New && <div className="status">{Resources["New"][currentLanguage]}</div>}
 
           <div className="info">
             <div className="top-info">
               <div className="name">{product.product_name}</div>
               <div className="price">
                 {minPrice !== null && maxPrice !== null
-                  ? `${minPrice} - ${maxPrice} EGP`
+                  ? minPrice === maxPrice
+                    ? `${minPrice} ${Resources["EGP"][currentLanguage]}`
+                    : `${minPrice} - ${maxPrice} ${Resources["EGP"][currentLanguage]}`
                   : "Not Found"}
               </div>
+
+              {console.log(product, "product")}
             </div>
 
             <div className="colors">

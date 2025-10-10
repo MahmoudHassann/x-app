@@ -59,7 +59,6 @@
 
   .sizing-area {
     .panel {
-
       ul {
         display: flex;
         flex-wrap: wrap;
@@ -246,6 +245,9 @@
   }
 }
 
- 
-
- 
+html[dir="rtl"] {
+  .product_details .details_area .location_ups .ups .icon {
+    margin-right: unset;
+    margin-left: 15px;
+  }
+}

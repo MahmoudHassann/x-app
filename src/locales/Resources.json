@@ -7,6 +7,28 @@
     "en": "Spring update: Discover the latest",
     "ar": "تحديث الربيع: اكتشف الأحدث"
   },
+  "men": {
+    "en": "Men's Collection",
+    "ar": "مجموعة الرجال"
+  },
+  "shopMen": {
+    "en": "Shop Men",
+    "ar": "متجر رجالي"
+  },
+
+  "filterBy": {
+    "en": "Filter by:",
+    "ar": "تصفية حسب:"
+  },
+  "sortBy": {
+    "en": "Sort by:",
+    "ar": "ترتيب حسب:"
+  },
+
+  "exploreNewArrivals": {
+    "en": "Explore New Arrivals",
+    "ar": "تصفح الإضافات الجديدة"
+  },
   "selectSizeFirst": {
     "en": "Please choose the size first",
     "ar": "رجاء اختيار المقاس اولاً"
@@ -24,8 +46,8 @@
     "ar": "حقيبة التسوق"
   },
   "proceedToCheckout": {
-    "en": "Proceed to checkout",
-    "ar": "الانتقال إلى الدفع"
+    "en": "Complete the purchase process",
+    "ar": "اكمال عملية الشراء"
   },
   "itemsNotReserved": {
     "en": "Items not reserved",
@@ -33,7 +55,7 @@
   },
   "checkoutNowToMakeThemYours": {
     "en": "checkout now to make them yours",
-    "ar": "قم بالدفع الآن لجعلها ملكك"
+    "ar": "قم بالشراء الآن لجعلها ملكك"
   },
   "quantity": {
     "en": "Quantity",
@@ -50,6 +72,10 @@
   "free": {
     "en": "Free",
     "ar": "مجاناً"
+  },
+  "tax": {
+    "en": "Tax",
+    "ar": "الضريبة"
   },
   "shippingType": {
     "en": "DHL Standard",
@@ -95,34 +121,20 @@
     "en": "Free shipping",
     "ar": "شحن مجاني"
   },
-  "60DayReturns": {
-    "en": "Free 60 day returns",
-    "ar": "إرجاع مجاني لمدة 60 يومًا"
+  "14DayReturns": {
+    "en": "Free 14 day returns",
+    "ar": "إرجاع مجاني لمدة 14 يومًا"
   },
   "FindAStores": {
     "en": "Find a Store",
     "ar": "البحث عن متجر"
   },
-  "privacyPolicyTitle": {
-    "en": "Privacy Policy",
-    "ar": "سياسة الخصوصية"
-  },
-  "privacyPolicyIntro": {
-    "en": "Welcome to our Privacy Policy page. Your privacy is critically important to us.",
-    "ar": "مرحبًا بك في صفحة سياسة الخصوصية الخاصة بنا. خصوصيتك مهمة جدًا بالنسبة لنا."
-  },
-  "informationWeCollect": {
-    "en": "Information We Collect",
-    "ar": "المعلومات التي نجمعها"
-  },
+
   "informationWeCollectContent": {
     "en": "We collect information to provide better services to all our users.",
     "ar": "نقوم بجمع المعلومات لتقديم خدمات أفضل لجميع مستخدمينا."
   },
-  "howWeUseInformation": {
-    "en": "How We Use Information",
-    "ar": "كيف نستخدم المعلومات"
-  },
+
   "howWeUseInformationContent": {
     "en": "The information we collect is used to improve our services and personalize your experience.",
     "ar": "نستخدم المعلومات التي نجمعها لتحسين خدماتنا وتخصيص تجربتك."
@@ -134,5 +146,474 @@
   "contactUsContent": {
     "en": "If you have any questions about our privacy practices, please contact us.",
     "ar": "إذا كانت لديك أي أسئلة حول ممارسات الخصوصية لدينا، يرجى التواصل معنا."
+  },
+  "privacyPolicyTitle": {
+    "en": "Privacy Policy",
+    "ar": "سياسة الخصوصية"
+  },
+  "privacyPolicyIntro": {
+    "en": "Our website respects your privacy and strives to protect your personal data. Our privacy policy explains how we collect and use your personal data (under certain circumstances). It also outlines the measures we take to ensure the privacy of your information. Finally, this policy identifies the choices available to you regarding the collection, use, and disclosure of personal data. By visiting the site directly or through another site, you agree to the practices described in this policy. Protecting your data is very important to us. Therefore, your name and other information about you will be used as described in this privacy policy. We will collect information when necessary or if it is directly relevant to our transactions with you. We will retain your data in accordance with the law or for the purposes for which it was collected. You can browse the website without having to provide any personal data. Your identity remains anonymous throughout your visit to the website and is only revealed if you have a private online account on the website that you access with a username and password.",
+    "ar": "موقعنا يحترم خصوصيّتك ويسعى لحماية بياناتك الشخصية. توضح سياسة الخصوصيّة كيفية جمع واستخدام بياناتك الشخصية (تحت ظروفٍ معينةٍ). كما تذكرُ أيضًا الإجراءات المتبعة لضمان خصوصية معلوماتك. وأخيرًا، تُحدّد هذه السياسة الخيارات المتاحة لكَ فيما يتعلَّق بجمع البيانات الشخصية واستخدامها والكشف عنها. ومن خلال زيارتك للموقع مباشرةً أو عن طريق موقعٍ آخر، فأنتَ توافق على الممارسات الموضحة في هذه السياسة. إن حماية بياناتك أمرٌ هامٌ جدًّا بالنسبة إلينا. ومن ثم، يتم استخدام اسمك وغيره من المعلومات التي تتعلّق بك وفقًا للّنحو المبيّن في سياسة الخصوصيّة. وسنقوم بجمع المعلومات عند الضرورة أو إذا كانت ذات صلةٍ ضرورية مباشرةٍ بمعاملاتنا معكَ. وسنقوم بالاحتفاظ ببياناتك وفقًا للقانون أو لاستخدامها للأغراض التي جُمعت لأجلها. ويمكنك تصفح الموقع دون الحاجة إلى تقديم أيّة بيانات شخصيّة. وتبقى هويّتك الشخصية مجهولة طيلة زيارتك للموقع ولا يتم كشفها إلا إذا كنتَ تملك حسابًا إلكترونياً خاصًا على الموقع تدخل إليه بواسطة اسم المستخدم وكلمة السرّ."
+  },
+
+  "informationWeCollect": {
+    "en": "1 – Information We Collect",
+    "ar": "1 – البيانات التي نجمعها"
+  },
+  "informationWeCollectText1": {
+    "en": "We may need to collect your personal information if you wish to place a purchase order for a product on our website. We collect, store, and process your data as necessary to follow up on your purchase from our website, to secure any potential claims that may arise later, and to provide you with the services available to us. We may collect personal information including, but not limited to, your name, gender, date of birth, email address, postal address, delivery address (if different), phone number, payment details, and payment card information. We use the information you provide to enable us to process your orders and to provide you with the services and information offered on our website that you request. Additionally, we will use the information you provide to manage your account with us, to verify online financial transactions, to audit the downloading of data from the website, to identify website visitors, and to develop and customize the website pages and/or content to users. We conduct various demographic research and send useful or requested information to users — such as information about products and services — unless you object to being contacted for such purposes. We may communicate via email to provide you with details about other products and services if you wish. If you prefer not to receive any promotional or marketing communications, please opt out at any time. We may pass your name and address on to a third party for the purpose of delivering your purchase order (for example, a delivery agent or supplier). We may be able to store the details related to your current order on our website, but for security reasons, we cannot retrieve them directly. By logging into your account on the website, you can view your information and the details of your purchases that you have made or will make soon. You can also manage your address details. You must commit to keeping your personal data confidential and not make it accessible to any unauthorized third party. We are not responsible for any misuse of passwords unless the misuse results from an error on our part.",
+    "ar": "قد نحتاج لجمع المعلومات الخاصة بكَ إذا أردت تسجيل طلب شراء لسلعة من موقعنا. ونقوم بجمع وتخزين ومعالجة بياناتك الازمة لمتابعة شرائك من موقعنا لتأمين أية مطالب محتملة قد تظهر لاحقاً، ولتزويدكَ بالخدمات المتوفرة لدينا. وقد نقوم بجمع معلومات شخصية تتضمَّن، على سبيل المثال وليس الحصر، الاسم والجنس وتاريخ الميلاد وعنوان البريد الإلكتروني والعنوان البريدي وعنوان التسليم (إذا كان مختلفًا) ورقم الهاتف وتفاصيل الدفع وتفاصيل عن بطاقات الدفع. ونستخدم المعلومات التي تقدِّمها لتمكننا من معالجة طلباتك ولتزويدكَ بخدمات ومعلومات معروضة على موقعنا والتي تطلبها أنت. وعلاوةً على ذلك، سنستخدم المعلومات التي تقدَّمها في إدارة حسابك معنا وللتحقّقَ من المعاملات المالية التي تُجريها على الإنترنت وعمليات تدقيق تحميل البيانات من الموقع وتحديد هويّة زائري الموقع وتطوير تصميمات صفحات الموقع و/أو محتوياته وتخصيصها للمستخدمين. ونقوم بأبحاث عديدة متعلقة بالتركيبة السكانية، ونُرسل المعلومات المفيدة أو المطلوبة إلى المستخدم، على سبيل المثال معلومات حول المنتجات والخدمات، وذلك في حالة عدم اعتراضك على التواصل معك بشأن ذلك. ويتم التواصل عبر البريد الإلكتروني لتزويدك ببعض التفاصيل حول المنتجات والخدمات الأخرى إذا كنت ترغب في ذلك، وإذا كنتَ تفضّل عدم تلقي أية اتصالات ترويجيّة وتسويقيّة، فيُرجى الانسحاب من هذا الخيار في أي وقتٍ من الأوقات. وقد نعطي اسمك وعنوانك إلى طرفٍ ثالث بهدف تسليمكَ طلب شرائك (على سبيل المثال، عامل التسليم أو المورِّد(. قد نتمكن من تخزين التفاصيل المتعلّقة بطلبك الحالي على موقعنا ولكن لا يمكننا استعادتها مباشرةً لأسبابٍ أمنيّة. وبتسجيل الدخول إلى حسابك على الموقع يمكنك الاطلاع على المعلومات وتفاصيل مشترياتك التي طلبتها أو التي ستتقدَّم بها قريبًا. وبمقدورك أيضاً إدارة تفاصيل عنوانك. كما يجدر بك التعهُّد بالتعامل بسريّة تامة عند الدخول إلى بياناتك الشخصيَّة فلا تجعلها متاحة لطرف ثالث غير مصرَّح به. ولا نتحمَّل أية مسؤولية ناتجة عن سوء استخدام كلمات السر إلا إذا كان سوء الاستخدام هذا ناشئ عن خطأ منّا."
+  },
+
+  "howWeUseInformation": {
+    "en": "2 – Use of Personal Information",
+    "ar": "2 – استخدامات أخرى لمعلوماتك الشخصيَّة"
+  },
+  "howWeUseInformationText1": {
+    "en": "We may use your personal information in opinion polls and marketing research, based on your preference, for statistical purposes while ensuring complete confidentiality. You have the right to withdraw at any time. We do not send any responses to third parties. Your email address will not be disclosed unless you wish to participate in competitions. We keep survey responses in a location completely separate from your private email. We may send you information about us, our website or other websites, our products, sales, promotions, newsletters, and other information related to our group companies or partners. If you do not wish to receive this additional information (or any part of it), please click on the “unsubscribe” link in any email sent to you. and we will stop sending you this information within seven business days (every day except Saturdays, Sundays, and national and religious holidays) of receiving your notification. We will contact you to ask for clarification if the information is unclear. We may use some data, while maintaining complete privacy and confidentiality on the website, for other purposes, including verifying the locations of users and tracking their visits to the website or links contained in the email while they are subscribed to receive it, and to provide that anonymous data, which does not allow your actual personal identity to be determined, to third parties such as publishers, for example. However, that data will not lead to the identification of your identity (because it is not identifiable).",
+    "ar": "قد نستخدم معلوماتك الشخصيَّة في استطلاعات الرأي وأبحاث التسويق، بناءً على رغبتك، لأغراضٍ إحصائية مع ضمان سريتها التامة، كما يحق لك الانسحاب في أيّ وقت. ولا نقوم بإرسال أي إجابات إلى أي طرف ثالث. ولا يتم الإفصاح عن عنوان بريدك الالكتروني إلا إذا رغبتَ في المشاركة في المسابقات. ونحتفظ بإجابات استطلاعات الرأي في مكانٍ منفصل تمامًا عن بريدك الإلكتروني الخاص. وقد نقوم بإرسال معلومات عنَّا، أو عن الموقع أو مواقعنا الأخرى أو عن منتجاتنا أو مبيعاتنا أو عروض بيعنا أو نشراتنا وغير ذلك ممّا له علاقة بالشركات التابعة لمجموعتنا أو شُركائنا. وإذا كنت لا ترغب في الحصول على هذه المعلومات الإضافيّة (أو في أي جزءٍ منها)، فيُرجى الضغط على رابط “إلغاء الاشتراك” الموجود في أي بريد إلكتروني مرسل إليك، وسنتوقّف عن إرسال هذه المعلومات لك في غضون سبع أيام عمل (كل يوم عدا أيام السبت والأحد والأعياد الوطنيّة والدينية) من تلقي إخطارك. وسنتواصل معك للاستفسار عن المعلومات في حين عدم وضوحها. وقد نستخدم بعض البيانات، مع الحفاظ التام على الخصوصيّة والسريّة على الموقع، لأغراض أخرى بما في ذلك التحقُّق من أماكن تواجد المستخدمين ومتابعة زيارتهم للموقع أو الروابط الواردة في البريد الإلكتروني في حين اشتراكهم لتلقيه، ولتزويد تلك البيانات مجهولة المصدر، التي لا تسمح بتحديد هويّتك الشخصيّة الفعليّة، إلى طرف ثالث كالنّاشرين على سبيل المثال. ومع ذلك، فتلك البيانات لن تؤدي إلى تحديد شخصيتك (لأنها غير محدّدة للهوية("
+  },
+
+  "competitions": {
+    "en": "3 – Competitions",
+    "ar": "3 – المنافسات"
+  },
+  "competitionsText": {
+    "en": "For any contest, we use the data to notify winners and to advertise our offers. You can find more details about the terms and conditions for each contest separately.",
+    "ar": "فيما يتعلق بأي منافسة، نستخدم البيانات لإخطار الفائزين وللإعلان عن عروضنا. ويمكنك العثور على مزيد من التفاصيل عن شروط المشاركة في كل منافسة على حدة."
+  },
+
+  "thirdPartiesAndLinks": {
+    "en": "4 – Third Parties and Links",
+    "ar": "4 – الأطراف الأخرى وروابط المواقع"
+  },
+  "thirdPartiesAndLinksText": {
+    "en": "We may transfer your information to other companies in our group or to our agents and contractors to assist us in transactions in accordance with the terms of our privacy policy. For example, we may use a third party to assist us in delivering products to you, receiving payments from you, and using them for statistical and marketing research purposes or to assist our customer service team. We may need to share information with third parties for fraud protection and credit risk reduction. If our company or part of it is sold, we may have to transfer our databases containing your personal information. Other than as described in this Privacy Policy, we will not sell or disclose your personal data to third parties without your prior consent, unless it is necessary for the purposes described in this Privacy Policy or if we are required to do so by law. The website may contain third-party advertisements or links to other websites or frames from other websites. Please be aware that we are not responsible for the privacy policies of any third parties or the content of those policies on other websites, nor are we responsible for any third parties to whom we transfer your data in accordance with this Privacy Policy.",
+    "ar": "قد ننقل معلوماتك إلى شركات أخرى في مجموعتنا أو إلى وكلائنا والمتعاقدين معنا لمساعدتنا في المعاملات المتعلقة وفقا لبنود سياسة الخصوصية. وقد نلجأ على سبيل المثال إلى طرف ثالث لمعاونتنا في تسليم المنتجات إليك واستلام الدفعات منك واستخدامها لأغراض الإحصاءات وأبحاث التسويق أو لمساعدة فريق خدمة العملاء. وقد نحتاج لتبادل المعلومات مع طرف ثالث بهدف الحماية من الاحتيال والحد من مخاطر الائتمان. و في حال تمّ بيع شركتنا أو جزء منها، فقد نضطر لنقل قواعد بياناتنا التي تشمل معلوماتك الشخصيّة. وبخلاف ما هو منصوص عليه في سياسة الخصوصية، لن نقوم ببيع بياناتك الشخصية أو الإفصاح عنها لطرف ثالث دون الحصول على موافقة مسبقة منك إلّا إذا كان ذلك ضروريًا للأغراض المنصوص عليها في سياسة الخصوصيّة هذه، أو إذا طُلب منّا ذلك بحكم القانون. وقد يحتوي الموقع على إعلانات لطرف ثالث أو روابط تؤدِّي إلى مواقعٍ أخرى أو إطارات لمواقعٍ أخرى. ونحيطك علماً بأننا غير مسؤولين عن سياسة الخصوصيّة الخاصة بأي طرف ثالث أو محتوى تلك السياسات المطبّقة في المواقع الأخرى، فضلًا عن أنّنا غير مسؤولين إزاء أي طرف ثالث ننقل إليه بياناتك بما يتوافق مع سياسة الخصوصيّة."
+  },
+
+  "cookies": {
+    "en": "5 – Cookies",
+    "ar": "5 – ملفات تعريف الارتباط (COOKIES)"
+  },
+  "cookiesText": {
+    "en": "Accepting cookies is not a prerequisite for visiting the website. However, we would like to point out that you cannot use the “basket” functions on the website and order any items without activating cookies. Cookies are small text files that allow our server to identify your computer as a unique user when you visit certain pages on the website. Your browser stores these files on your computer's hard drive. Cookies can be used to detect your Internet Protocol (IP) address, which saves you time when you are on the site or want to visit it. We use cookies to ensure your convenience when browsing this site (for example, to remember your identity when you want to modify your shopping cart without having to re-enter your email address) and not to obtain or use other information about you (for example, for targeted marketing purposes). You can set your browser to not accept cookies, but this will limit your use of the site. Please be assured that our use of cookies does not contain any personal or private information and is virus-free. This website uses Google Analytics, a service provided by Google to analyze web pages. To analyze how users use the site, Google Analytics relies on cookies, which are text files placed on your computer. Google will transmit the information generated by cookies about your use of this site (including your IP address) to servers in the United States, where it will be stored. Google will use this information for the purpose of evaluating your use of the website, compiling reports on website activity for website operators and providing other services relating to website activity and internet usage.",
+    "ar": "لا يُعتبر قبول ملفات تعريف الارتباط شرطًا أساسيًا لزيارة الموقع. ولكنّنا نشير إلى أنّه لا يمكن استخدام وظائف “السلّة” على الموقع وطلب أي غرض من دون تفعيل ملفات تعريف الارتباط. وتُعتبر ملفات تعريف الارتباط ملفات نصيّة صغيرة تسمح لخادمنا بتحديد حاسوبك كمستخدم فريدٍ عند زيارة صفحات معينة من الموقع. ويخزِّن متصفّحك هذه الملفات على قرص حاسوبك الثابت. ويمكن استخدام ملفات تعريف الارتباط لاكتشاف عنوان بروتوكول الإنترنت (IP)، مما يوفّر لك الوقت عندما تكون على الموقع أو تريد زيارته. ونستخدم ملفات تعريف الارتباط لضمان راحتك عندما تتصفّح هذا الموقع (لنتذكر على سبيل المثال هويّتك عندما تريد تعديل سلّة تسوقك بدون الحاجة إلى إعادة إدخال عنوان بريدك الإلكتروني) وليس من أجل الحصول على معلومات أخرى عنك أو استخدامها (مثلاً لأغراض التسويق المستهدف). ويمكنك ضبط متصفحك حتى لا يقبل ملفات تعريف الارتباط ولكن هذا من شأنه أن يحدّ من استخدامك للموقع. ونرجو أن تتأكد من أنّ لجوءنا إلى ملفات تعريف الارتباط لا يحتوي على أية معلومات شخصية أو خاصة ويخلو من الفيروسات ويستخدم هذا الموقع خدمة تحليلات جوجل (Google Analytics) وهي خدمة تقدّمها شركة جوجل لتحليل صفحات شبكة الإنترنت. ولتحليل كيفية استخدام المستخدمين للموقع، ترتكز خدمة تحليلات جوجل على ملفات تعريف الارتباط وهي ملفات نصيّة وُضعت على حاسوبك. وستنقل شركة جوجل المعلومات التي تولّدها ملفات تعريف الارتباط عن استخدامك لهذا الموقع (بما في ذلك عنوان بروتوكول الإنترنت) إلى خوادم في الولايات المتحدة حيث سيتم تخزينها. وسوف تستخدم شركة جوجل هذه المعلومات لتقييم استخدامك للموقع، وإعداد تقارير لمشغلي الموقع عن نشاطه وتوفير خدمات أخرى مرتبطة بنشاط الموقع واستخدام الإنترنت. وقد تنقل جوجل أيضاً هذه المعلومات إلى طرف ثالث في حال طُلب منها ذلك بموجب القانون أو في حال عالج طرف ثالث المعلومات بالنيابة عن شركة جوجل. ولن تربط شركة جوجل عنوان بروتوكول الإنترنت خاصتكَ مع أيّة بيانات أخرى تحتفظ بها. ويمكنك رفض استخدام ملفات تعريف الارتباط وذلك عن طريق اختيار الإعدادات المناسبة على متصفحك ولكن ترجو أن تأخذ بعين الاعتبار أنّك عندئذ لن تستطيع الاستفادة من وظيفة الموقع الكاملة. ومن خلال استخدامك هذا الموقع، فأنت توافق على أن تستخدم شركة جوجل بياناتك على النحو المبين والأغراض المفصَّلة أعلاه."
+  },
+
+  "security": {
+    "en": "6 – Security",
+    "ar": "6 – الأمان"
+  },
+  "securityText": {
+    "en": "We use appropriate security technologies and procedures to prevent unauthorized or unlawful access to, loss, or destruction of your information. When we collect data through the website, we store your personal information on a database within a secure server. We use firewall systems on our servers. When we collect payment card details electronically, we protect them using encryption, such as Secure Sockets Layer (SSL). This makes it difficult for any hacker to decrypt your information, as we cannot guarantee 100% protection. We strongly advise you not to send your entire credit card or debit card details when communicating with us electronically and without encryption. We put physical, electronic, and procedural safeguards in place in connection with the collection, storage, and disclosure of your information. Our security procedures may require us to ask you to verify your identity before we disclose your personal information to you. You are responsible for protecting your password and computer from unauthorized use.",
+    "ar": "نستخدم تقنيات وإجراءات أمان ملائمة لمنع أي وصول غير مصرَّح به أو غير قانوني لمعلوماتك أو فقدانها أو تدميرها. فعندما نجمع البيانات من خلال الموقع، نقوم بتخزين معلوماتك الشخصية على قاعدة بيانات ضمن خادم إلكتروني آمن. فنستخدم أنظمة جدار الحماية على خوادمنا. وعندما نقوم بجمع تفاصيل بطاقات الدفع إلكترونيًا، فإننا نحميها من خلال استخدام التشفير، مثل طبقة مآخذ التوصيل الآمنة (SSL). فيصعب بالتّالي على أيّ متسلّلٍ فكّ تشفير معلوماتك بما أنّنا لا نستطيع ضمان الحماية بنسبة مئة في المئة. وننصحك بشدَّة بعدم إرسال كل تفاصيل بطاقة الائتمان أو بطاقة السحب الآلي عندما تتواصل معنا إلكترونيًا ومن دون تشفير. ونضع ضمانات ماديّة وإلكترونية وإجرائيّة مباشرة على عملية جمع معلوماتك وتخزينها والإفصاح عنها. وتتطلّب إجراءاتنا الأمنية أن نطلب منك أحياناً إثبات هويتك قبل أن نُفصِح لك عن معلوماتك الشخصية. وتقع على عاتقك مسؤولية حماية كلمتك السريّة وحاسوبك من أيّ استخدام غير مصرَّح به."
+  },
+
+  "customerRights": {
+    "en": "7 – Customer Rights",
+    "ar": "7 – حقوق العميل"
+  },
+  "customerRightsText": {
+    "en": "If you are concerned about your data, you have the right to request access to the personal data we hold about you or that you have previously provided to us. You have the right to ask us to correct any errors in your personal data, and this will be done free of charge. You also have the right to ask us, at any time, to stop using your personal data for direct marketing purposes.",
+    "ar": "في حال شعورك بالقلق على بياناتك، يحق لك طلب الوصول إلى البيانات الشخصيّة التي نحملها عنك أو سبق ونقلتها إلينا. ويحق لك أن تطلب منَّا تصحيح أي أخطاء في بياناتك الشخصيّة ويتم ذلك مجانًا. ولك الحق أيضًا في مطالبتنا، في أي وقت، بالتوقُّف عن استخدام بياناتك الشخصية لأغراض تسويقيّة مباشرة."
+  },
+
+  "shippingPolicyTitle": {
+    "en": "Shipping Policy",
+    "ar": "سياسة الشحن"
+  },
+  "shippingPolicyIntro": {
+    "en": "Once your purchase is confirmed, we ship and deliver the product using the method you selected, either through our designated shipping representative or via the Amana Express service.",
+    "ar": "يعد تأكيد عملية الشراء، نقوم بشحن وإرسال المنتج عبر الطريقة التي تقدم باختيارها، إما عبر مسؤول الشحن الخاص بنا أو عبر خدمة أمانة إكسبريس."
+  },
+  "shippingMethodsTitle": {
+    "en": "Shipping Methods:",
+    "ar": "طرق الشحن:"
+  },
+  "shippingMethodAmana": {
+    "en": "Amana Express: A service that ensures the delivery of your shipments to the desired address within 3 to 7 days, depending on your location.",
+    "ar": "أمانة إكسبريس: خدمة تضمن لكم تسليم الإرساليات إلى العنوان المطلوب في مدة تتراوح بين 3 أيام و7 أيام حسب الاتجاهات والمناطق."
+  },
+  "shippingMethodRepresentative": {
+    "en": "Our Shipping Representative: We work with a network of local shipping agents in various cities who deliver products within 1 to 3 days.",
+    "ar": "مسؤول الشحن: نتعامل مع مجموعة من مسؤولي الشحن في عدد من المدن يقومون بإيصال المنتجات في مدة تتراوح بين يوم و3 أيام."
+  },
+  "allRightsReserved": {
+    "en": "© 2025 All rights reserved for MISTER.X",
+    "ar": "© 2025 جميع الحقوق محفوظة لـ MISTER.X"
+  },
+  "refundPolicyTitle": {
+    "en": "Exchange and Refund Policy",
+    "ar": "سياسة الاستبدال و الاسترجاع"
+  },
+  "refundPolicyList1": {
+    "en": "Exchange and refund are guaranteed rights for all our customers, covering all products available in our store.",
+    "ar": "الإستبدال والإسترجاع حق مضمون لكل عملائنا وهو يشمل جميع المنتجات التي نعرضها على متجرنا."
+  },
+  "refundPolicyList2": {
+    "en": "All products displayed in our store are subject to the exchange and refund policy according to the terms and conditions stated on this page.",
+    "ar": "جميع المنتجات المعروضة على متجرنا قابلة لسياسة الإستبدال والإسترجاع وفق الشروط والأحكام المنصوص عليها في هذه الصفحة."
+  },
+  "refundPolicyList3": {
+    "en": "Exchange or refund is possible only if the product is in its original condition at the time of purchase and includes the original packaging.",
+    "ar": "يمكن الإرجاع أو الإستبدال إذا كان المنتج بنفس حالة الأصلية عند الشراء ومعافا بالغلاف الأصلي."
+  },
+  "refundPolicyList4": {
+    "en": "Exchange or refund requests are approved within 3 business days.",
+    "ar": "يتم الموافقة على طلب الإستبدال أو الإسترجاع خلال 3 أيام عمل."
+  },
+  "refundPolicyList5": {
+    "en": "Once approved, the delivery representative will contact the customer within 3–5 business days to complete the exchange or refund.",
+    "ar": "في حالة الموافقة على طلب الإسترجاع والإستبدال المندوب يصل للعميل خلال 3-5 أيام عمل."
+  },
+  "refundPolicyList6": {
+    "en": "Please send a message via WhatsApp to the number shown on the shipping invoice to request an exchange or refund, or contact us through the Contact Us page.",
+    "ar": "يرجى إرسال رسالة عبر تطبيق أو Whatsapp الرقم الموضح في بوليصة الشحن من أجل طلب الإسترجاع أو الإستبدال أو التواصل معنا عبر صفحة اتصل بنا من أجل طلب الاسترجاع أو الإسترداد."
+  },
+  "refundPolicyList7": {
+    "en": "Please take a photo of the product and send it with your city, address, and order number so we can replace it if it is damaged, defective, or not as described.",
+    "ar": "يرجى تصوير المنتج وإرساله مع تحديد المدينة والعنوان ورقم الطلب لنتم إستداله منتج آخر في حالة كان المنتج معيباً أو به عيب معين، أو لا يتطابق مع المتفق عليه."
+  },
+  "refundPolicyList8": {
+    "en": "The full amount will be refunded to the customer if the received product is completely different from the description on our website.",
+    "ar": "يتم إسترجاع المبلغ للعميل كاملاً في حالة كان المنتج الذي توصل به مختلف تماماً مع وصف المنتج في صفحة المنتج بموقعنا."
+  },
+  "refundPolicyList9": {
+    "en": "We are not responsible for any personal expectations of product usage not mentioned in the product page description.",
+    "ar": "لسنا مسؤولين عن أي توقعات لإستعمال المنتجات من طرف العميل لم تذكرها بصفحة المنتج بموقعنا."
+  },
+  "termsOfUseTitle": {
+    "en": "Terms of Use",
+    "ar": "شروط الاستخدام"
+  },
+  "termsIntroTitle": {
+    "en": "Introduction",
+    "ar": "المقدمة"
+  },
+  "termsIntroText1": {
+    "en": "The Terms of Use apply to this website and all its sections, branches, and related websites that refer to these terms and conditions as a reference.",
+    "ar": "تنطبق شروط الاستخدام على الموقع وعلى جميع أقسامها وفروعها ومواقع الإنترنت التابعة لها التي تُشير إلى هذه الشروط والأحكام كمرجعٍ لها."
+  },
+  "termsIntroText2": {
+    "en": "By visiting the site, the customer acknowledges agreement to the current terms and conditions. If you do not agree, you must stop using the site. The website owners reserve the right to change or update parts of these terms, add or remove information, at any time without prior notice. Updates become effective once published on the website. You are encouraged to review these terms regularly. Your continued use of the site after any changes constitutes full acceptance of those modifications.",
+    "ar": "عند زيارة الموقع، يقر العميل موافقته على الشروط والأحكام الحالية. وإن كنت لا توافق عليها، فعليك عدم استخدام هذا الموقع. ويحتفظ القائمون على الموقع بالحق في تغيير أجزاء من شروط الاستخدام والأحكام أو تعديلها أو إضافة معلومات إليها، أو إزالتها في أي وقت. وتصبح التغييرات سارية النفاذ عندما يتم نشرها على الموقع دون سابق إشعار. ويُرجى مراجعة شروط الاستخدام والأحكام بانتظام للاطلاع على أي تحديثات. ويشكِّل استخدامك المستمر للموقع ــ بعد نشر التغييرات الحادثة في هذه الشروط والأحكام الخاصة بالاستخدام ــ موافقتك التامة على تلك التغييرات."
+  },
+
+  "termsUseTitle": {
+    "en": "Use of the Website",
+    "ar": "استخدام الموقع"
+  },
+  "termsUseText1": {
+    "en": "To visit this website, you must be at least 18 years old or visit under the supervision of a parent or legal guardian.",
+    "ar": "لزيارة هذا الموقع، يجب ألا يقل عمرك عن 18 عامًا أو أن تزور الموقع تحت إشراف أحد الوالدين أو الوصي القانوني."
+  },
+  "termsUseText2": {
+    "en": "We grant you a non-transferable, revocable license to use the website under the specified terms and conditions for the purpose of shopping for personal items sold on the website. Commercial use or acting on behalf of a third party is prohibited unless explicitly authorized by us. Any violation of these terms results in immediate termination of this license without notice.",
+    "ar": "ونمنحك ترخيصًا غير قابل للتحويل أو الإلغاء لكي تستخدم الموقع بموجب الشروط والأحكام المحدَّدة. وتكمن غاية هذا الترخيص في التسوُّق لشراء سلعٍ شخصية تُباع على الموقع. ويُحظر الاستخدام لأغراض تجارية أو الاستخدام باسم أي طرف ثالث، باستثناء ما تمَّ السماح به من قبلنا بوضوح وشفافية سلفًا. ويؤدِّي أي خرق لهذه الشروط والأحكام إلى إلغاء فوري للترخيص الممنوح في هذه الفقرة من دون أي سابق إنذار لك."
+  },
+  "termsUseText3": {
+    "en": "Content displayed on this site is for informational purposes only. Product descriptions are provided by sellers, and any comments or opinions expressed belong to their respective authors and do not represent our views.",
+    "ar": "يتم عرض المحتوى الظاهر على هذا الموقع لأغراض إعلامية فقط. وتعود التوضيحات التي تخُص المنتجات والتي أُعرب عنها في هذا الموقع إلى البائعين أنفسهم وليس لنا فيها أي شأن. وترجع التعليقات أو الآراء الواردة على هذا الموقع إلى الجهة التي نشرتها وبالتالي لا تعكس آراءنا."
+  },
+  "termsUseText4": {
+    "en": "Some related services or features available on the website may require registration or subscription. By choosing to register, you agree to provide accurate, up-to-date information and to update it as necessary. You are solely responsible for maintaining your account and password. We are not responsible for any loss or damage resulting from your failure to comply with these requirements.",
+    "ar": "تتطلب بعض الخدمات والميزات ذات الصلة التي قد تكون متوفرة على الموقع التسجيل أو الاشتراك فيها. وباختيارك التسجيل أو الاشتراك في أيّ من هذه الخدمات أو الميزات ذات الصلة، فإنَّك توافق على تقديم معلومات دقيقة وحالية عن نفسك وعلى تحديثها في الوقت المناسب إذا طرأت أيّة تغييرات عليها. ويتحمَّل كُلّ مستخدم للموقع مسؤولية حفظ كلمات السر وغيرها من أساليب تحديد حساب الاستخدام بطريقة سليمة. ولا يُعد الموقع مسؤولاً عن أي خسارة أو ضرر قد ينتُج عن الإخفاق في الالتزام بهذه المتطلبات."
+  },
+  "termsUseText5": {
+    "en": "By registering, you agree to receive promotional emails from us. You can opt out anytime by clicking the unsubscribe link at the bottom of any promotional email.",
+    "ar": "وأثناء عملية التسجيل، يوافق العميل على تلقِّي رسائل إلكترونية ترويجية من قِبل الموقع. ويمكنك، في وقت لاحق، إلغاء هذا الخيار وعدم تلقي أي رسائل إلكترونية ترويجية من خلال الضغط على الرابط الموجود في الجزء السفلي من أية رسالة إلكترونية ترويجية."
+  },
+
+  "userPostsTitle": {
+    "en": "User Contributions",
+    "ar": "مشاركات المستخدم"
+  },
+  "userPostsText1": {
+    "en": "All your submissions on the website, including but not limited to questions, comments, reviews, and suggestions (collectively 'Submissions'), become our sole property. By posting, you grant us the right to use your name associated with such content. You may not use a false email or impersonate others. We reserve the right to edit or remove any submissions but are not obliged to do so.",
+    "ar": "إنّ كلّ مشاركاتك على الموقع و/أو ما تقدمه لنا، بما في ذلك ــ على سبيل المثال وليس الحصرــ الأسئلة والانتقادات والتعليقات والاقتراحات (مجتمعين في لفظة “المشاركات”) تصبح ملكنا الوحيد والحصري. وبمجرَّد أنَّك تشاركنا بتعليقاتك أو انتقاداتك على الموقع، فإنَّك تمنحنا أيضاً حقّ استخدام الاسم الذي تعرضه والمرتبط مباشرةً بهذا النقد أو التعليق أو أي محتوى آخر. ولا يحق لك استخدام عنوان مزيَّف للبريد الإلكتروني أو الادِّعاء بأنّك شخصٌ آخر أو محاولة تضليلنا أو أي طرف ثالث. ويجوز لنا حذف أيّ من المشاركات أو تعديلها، غير أننا لسنا ملزمين بذلك."
+  },
+
+  "ordersApprovalTitle": {
+    "en": "Order Approval and Pricing Details",
+    "ar": "الموافقة على الطلبات وتفاصيل الأسعار"
+  },
+  "ordersApprovalText1": {
+    "en": "In certain cases, orders may not be approved for various reasons. We reserve the right to refuse or cancel any order at any time. Before approval, we may request additional information such as phone number or address verification.",
+    "ar": "يُرجى الملاحظة أنّه في بعض الحالات، قد لا تتم الموافقة على طلب ما لعدَّة أسباب. ويحتفظ القائمون على الموقع بالحقّ في رفض أو إلغاء أي طلب لأي سببٍ من الأسباب وفي أي وقت. وقبل أن نوافق على الطلب، قد نطلب منك تقديم معلومات إضافية أو بيانات أخرى للتحقق من شيء ما، بما في ذلك رقم الهاتف والعنوان."
+  },
+  "ordersApprovalText2": {
+    "en": "We strive to provide accurate pricing information. However, errors may occur, and if a product’s price is incorrect, we reserve the right to cancel or adjust the order accordingly, even if the payment has been processed.",
+    "ar": "ونحرص على توفير أدق المعلومات المتعلقة بالأسعار لجميع المستخدمين الذين يزورون الموقع. إلّا أنَّ الأخطاء قد تَرِدُ في بعض الأحيان، كالحالات التي لا يتمّ فيها تحديد سعر المنتج بشكلٍ صحيحٍ على الموقع. ومن ثمّ، فنحتفظ بالحقّ في رفض أو إلغاء أي طلبات سواء تمّ تأكيدها أو لا وبعد إضافة الرسوم على بطاقة الائتمان."
+  },
+
+  "trademarksTitle": {
+    "en": "Trademarks and Copyright",
+    "ar": "العلامات التجارية وحقوق النشر"
+  },
+  "trademarksText": {
+    "en": "All intellectual property rights, registered or unregistered, on the website—including text, graphics, designs, images, videos, and source code—are our exclusive property. All rights reserved.",
+    "ar": "إنَّ جميع حقوق الملكية الفكرية، سواء كانت مسجلَّة أو غير مسجلَّة، في الموقع، وجميع معلومات المحتوى والتصميمات الواردة على الموقع، تُعتبر ملكاً لنا، بما في ذلك النصوص والرسوم والبرامج والصور والفيديو والموسيقى والصوت، واختيارها وتنسيقها، فضلاً عن جميع مصنّفات البرمجيات ورموز المصادر والبرامج الرئيسية. جميع الحقوق محفوظة."
+  },
+
+  "lawTitle": {
+    "en": "Applicable Law and Jurisdiction",
+    "ar": "القانون السائد والهيئات القضائية"
+  },
+  "lawText": {
+    "en": "These terms and conditions are governed by the laws of the country. Both parties agree to submit to the exclusive jurisdiction of local courts and waive any objections regarding venue.",
+    "ar": "تُفسَّر هذه الشروط والأحكام وتُطبَّق بموجب القوانين السارية في البلد. وبموجب ذلك، يوافق كل طرف على المثول أمام هيئات المحاكم القضائية في البلد والتنازل عن أية اعتراضات تتعلق بالمكان."
+  },
+
+  "terminationTitle": {
+    "en": "Termination",
+    "ar": "إلغاء الموافقة"
+  },
+  "terminationText1": {
+    "en": "We may terminate these terms or revoke any of your rights granted herein immediately without prior notice if you violate any of the conditions. Upon termination, you must stop using the website immediately, and we may disable your account and refuse future access.",
+    "ar": "بالإضافة إلى أي أحكام قانونية أو إجراءات الإنصاف القضائي، يجوز لنا، فورًا ومن دون سابق إنذار لك، إنهاء هذه الشروط والأحكام أو نلغي أيا من حقوقك الممنوحة أو جميعها بموجب الشروط والأحكام. وفي أي حالة لإنهاء هذا التعاقد، يتعيّن عليك التوقّف فورًا عن زيارة الموقع واستخدامه، وقد نُلغي فورًا جميع كلمات السرّ أو غيرها من أساليب تعريف الحساب الممنوحة لك، ونرفض أي زيارة أو استخدام لهذا الموقع كلّيًا أو جزئيًا."
+  },
+  "terminationText2": {
+    "en": "Termination does not affect any existing obligations prior to that date. We are not liable for any damages resulting from suspension or termination of the service. If you are dissatisfied with the site or its policies, your sole remedy is to stop using it.",
+    "ar": "لن يؤثِّر أي إبطال لهذا الاتفاق في جميع الحقوق والالتزامات الخاصة بالأطراف والصادرة قبل تاريخ إنهاء التعاقد. ولن يتحمل القائمون على الموقع أي مسؤولية تجاهك أو تجاه أي طرف آخر نتيجة لتعليق الخدمة أو إنهائها. وإذا كنتَ غير راضٍ عن هذا الموقع أو عن أي من سياساته أو ممارساته، فإن الحل الوحيد هو التوقُّف عن استخدام الموقع."
+  },
+  "storeLocator": {
+    "en": "Store Locator",
+    "ar": "محدد المتجر"
+  },
+  "Info": {
+    "en": "Info",
+    "ar": "معلومات"
+  },
+  "Categories": {
+    "en": "Categories",
+    "ar": "الفئات"
+  },
+  "EGP": {
+    "en": "EGP",
+    "ar": "ج.م"
+  },
+  "search": {
+    "en": "Search",
+    "ar": "بحث"
+  },
+  "english": {
+    "en": "English",
+    "ar": "الإنجليزية"
+  },
+  "arabic": {
+    "en": "Arabic",
+    "ar": "العربية"
+  },
+  "priceRange": {
+    "en": "Price Range",
+    "ar": "نطاق السعر"
+  },
+  "size": {
+    "en": "Size",
+    "ar": "الحجم"
+  },
+  "category": {
+    "en": "Category",
+    "ar": "التصنيف"
+  },
+  "New": {
+    "en": "New",
+    "ar": "جديد"
+  },
+  "Sale": {
+    "en": "Sale",
+    "ar": "تخفيض"
+  },
+  "Bestsellers": {
+    "en": "Bestsellers",
+    "ar": "الأكثر مبيعًا"
+  },
+  "Low to High": {
+    "en": "Low to High",
+    "ar": "من الأقل إلى الأعلى"
+  },
+  "High to Low": {
+    "en": "High to Low",
+    "ar": "من الأعلى إلى الأقل"
+  },
+  "includingVat": {
+    "en": "Including VAT",
+    "ar": "شامل الضريبة"
+  },
+  "AvailableColors": {
+    "en": "Available Colors",
+    "ar": "الألوان المتاحة"
+  },
+  "Color": {
+    "en": "Color",
+    "ar": "اللون"
+  },
+  "Sizing": {
+    "en": "Sizing",
+    "ar": "التحجيم"
+  },
+  "productIsAvailable": {
+    "en": "Product is available",
+    "ar": "المنتج متوفر"
+  },
+  "FreeShipping": {
+    "en": "Free Shipping",
+    "ar": "شحن مجاني"
+  },
+  "shippingCost": {
+    "en": "Shipping Cost",
+    "ar": "رسوم الشحن"
+  },
+  "addToBag": {
+    "en": "Add to Bag",
+    "ar": "أضف إلى الحقيبة"
+  },
+  "availableBranches": {
+    "en": "Available branches",
+    "ar": "الفروع المتوفرة"
+  },
+  "availableStocks": {
+    "en": "Available Stocks",
+    "ar": "المخزون المتوفر"
+  },
+  "forSize": {
+    "en": "for size",
+    "ar": "لمقاس"
+  },
+  "only": {
+    "en": "Only",
+    "ar": "فقط"
+  },
+  "leftForSize": {
+    "en": "left for size",
+    "ar": "متبقي للمقاس"
+  },
+  "fromColor": {
+    "en": "from color",
+    "ar": "من لون"
+  },
+  "customerInformation": {
+    "en": "Customer Information",
+    "ar": "معلومات العميل"
+  },
+  "name": {
+    "en": "Name",
+    "ar": "الاسم"
+  },
+  "phoneNumber": {
+    "en": "Phone Number",
+    "ar": "رقم الهاتف"
+  },
+  "address": {
+    "en": "Address",
+    "ar": "العنوان"
+  },
+  "dateOfBirth": {
+    "en": "Date of Birth",
+    "ar": "تاريخ الميلاد"
+  },
+  "directions": {
+    "en": "Directions",
+    "ar": "الاتجاهات"
+  },
+  "nameMin": {
+    "en": "Name must be at least 3 characters",
+    "ar": "يجب أن يكون الاسم 3 أحرف على الأقل"
+  },
+  "nameMax": {
+    "en": "Name must be less than 50 characters",
+    "ar": "يجب ألا يزيد الاسم عن 50 حرفًا"
+  },
+  "nameRequired": {
+    "en": "* Name is required",
+    "ar": "* الاسم مطلوب"
+  },
+
+  "phoneOnlyNumbers": {
+    "en": "Phone number must contain only numbers",
+    "ar": "يجب أن يحتوي رقم الهاتف على أرقام فقط"
+  },
+  "phoneMin": {
+    "en": "Phone number must be at least 11 digits",
+    "ar": "يجب ألا يقل رقم الهاتف عن 11 رقمًا"
+  },
+  "phoneMax": {
+    "en": "Phone number must be less than 15 digits",
+    "ar": "يجب ألا يزيد رقم الهاتف عن 15 رقمًا"
+  },
+  "phoneRequired": {
+    "en": "* Phone number is required",
+    "ar": "* رقم الهاتف مطلوب"
+  },
+
+  "addressMin": {
+    "en": "Address must be at least 10 characters",
+    "ar": "يجب أن يكون العنوان 10 أحرف على الأقل"
+  },
+  "addressMax": {
+    "en": "Address must be less than 200 characters",
+    "ar": "يجب ألا يزيد العنوان عن 200 حرف"
+  },
+  "addressRequired": {
+    "en": "* Address is required",
+    "ar": "* العنوان مطلوب"
+  },
+
+  "dobMax": {
+    "en": "Date of birth cannot be in the future",
+    "ar": "لا يمكن أن يكون تاريخ الميلاد في المستقبل"
+  },
+  "dobRequired": {
+    "en": "* Date of birth is required",
+    "ar": "* تاريخ الميلاد مطلوب"
+  },
+  "dobMinAge": {
+    "en": "You must be at least 16 years old",
+    "ar": "يجب ألا يقل عمرك عن 16 عامًا"
+  },
+  "orderSummary": {
+    "en": "Order Summary",
+    "ar": "ملخص الطلب"
+  },
+  "goToHome": {
+    "en": "Go to Home",
+    "ar": "الذهاب للصفحة الرئيسية"
+  },
+  "orderItems": {
+    "en": "Order Items",
+    "ar": "عناصر الطلب"
+  },
+  "orderDetails": {
+    "en": "Order Details",
+    "ar": "تفاصيل الطلب"
+  },
+  "unitPrice": {
+    "en": "Unit Price",
+    "ar": "سعر الوحدة"
+  },
+  "afterOrderConfirmed": {
+    "ar": "بعد تأكيد الطلب يتم شحن المنتج بالطريقة التي تم اختيارها أثناء الشراء.",
+    "en": "After confirming your order, the product will be shipped using your selected delivery method."
+  },
+  "availableShippingMethods": {
+    "ar": "خيارات الشحن المتاحة:",
+    "en": "Available shipping methods:"
+  },
+  "amanaExpressDelivery": {
+    "ar": "أمانة إكسبريس: توصيل خلال 3 إلى 7 أيام إلى العنوان المطلوب في الاتجاهات الرئيسية.",
+    "en": "Amana Express: Delivery within 3–7 days to the specified address in main regions."
+  },
+  "deliveryAgentService": {
+    "ar": "مسؤول الشحن: توصيل خلال 1 إلى 3 أيام داخل المدن المتعاقدة.",
+    "en": "Delivery agent: Delivery within 1–3 days in contracted cities."
+  },
+  "trustedShippingTeam": {
+    "ar": "الشحن يتم من خلال فريق موثوق لضمان وصول المنتج بأمان.",
+    "en": "Shipping is handled by a trusted team to ensure safe delivery."
+  },
+  "shipmentTrackingNotification": {
+    "ar": "يتم إعلامك بتفاصيل الشحنة فور تسليمها إلى شركة التوصيل.",
+    "en": "You will be notified with shipment details once handed to the courier."
   }
 }

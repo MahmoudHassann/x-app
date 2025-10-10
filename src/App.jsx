@@ -1,18 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 import "./App.css";
 import Layout from "./Pages/Layout";
 import LayoutWithoutFooter from "./Pages/LayoutWithoutFooter.jsx";
 import ProtectedRoute from "./components/helpers/ProtectedRoute.jsx";
 import ScrollToTop from "./components/helpers/ScrollToTop.jsx";
 import { MainLoading } from "./components/Loading/MainLoading.jsx";
-import PaymentCallback from "./components/PaymentCallback.jsx";
-import PaymentFailed from "./components/PaymentFailed.jsx";
-import PaymentSuccess from "./components/PaymentSuccess.jsx";
+ 
 import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
 import Terms from "./Pages/Terms.jsx";
 import Refund from "./Pages/Refund.jsx";
 import Shipping from "./Pages/Shipping.jsx";
+import { useDispatch } from "react-redux";
+import { fetchCategories } from "./redux/slices/common-slice.js";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Shop = lazy(() => import("./Pages/Shop"));
@@ -22,8 +22,23 @@ const Register = lazy(() => import("./components/Auth/Register"));
 const ProductDetails = lazy(() => import("./Pages/ProductDetails"));
 const NotFound = lazy(() => import("./Pages/NotFound"));
 const CheckOut = lazy(() => import("./Pages/CheckOut"));
+const OrderDetails = lazy(() => import("./Pages/OrderDetails"));
 const SearchPage = lazy(() => import("./components/Search/SearchPage"));
 function App() {
+  const dispatch = useDispatch();
+  const currentLang = localStorage.getItem("language") || "en";
+  useEffect(() => {
+    if (currentLang === "ar") {
+      document.documentElement.lang = "ar";
+      document.documentElement.dir = "rtl";
+    } else {
+      document.documentElement.lang = "en";
+      document.documentElement.dir = "ltr";
+    }
+  }, [currentLang]);
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
   const routes = [
     {
       path: "/",
@@ -37,18 +52,7 @@ function App() {
         { path: "refund", element: <Refund /> },
         { path: "shipping", element: <Shipping /> },
         { path: "search", element: <SearchPage /> },
-        {
-          path: "payment-callback",
-          element: <PaymentCallback />,
-        },
-        {
-          path: "payment-success",
-          element: <PaymentSuccess />,
-        },
-        {
-          path: "payment-failed",
-          element: <PaymentFailed />,
-        },
+       
 
         {
           path: "register",
@@ -67,7 +71,10 @@ function App() {
     {
       path: "/checkout",
       element: <LayoutWithoutFooter />,
-      children: [{ path: "shopping-bag", element: <CheckOut /> }],
+      children: [
+        { path: "shopping-bag", element: <CheckOut /> },
+        { path: "order-details", element: <OrderDetails /> },
+      ],
     },
   ];
   return (

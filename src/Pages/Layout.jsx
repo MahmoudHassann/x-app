@@ -3,10 +3,10 @@ import Footer from "../components/Footer/Footer";
 import Navbar from "../components/Navbar/Navbar";
 import { Outlet } from "react-router-dom";
 
-export default function Layout() {
+export default function Layout(props) {
   return (
     <>
-      <Navbar />
+      <Navbar categories={props.categories} />
       <Outlet />
       <Footer />
       <ToastContainer />

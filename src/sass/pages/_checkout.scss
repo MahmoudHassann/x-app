@@ -154,9 +154,14 @@
           padding-bottom: 6px;
           border-bottom: 1px solid #e4e6e7;
           li {
-            &:first-child {
-              display: flex;
-              align-items: flex-end;
+            // &:first-child {
+            //   display: flex;
+            //   align-items: flex-end;
+            // }
+            display: flex;
+            align-items: flex-start;
+            &.column {
+              flex-direction: column;
             }
           }
           li.is_free p,

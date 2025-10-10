@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { setCategory } from "../../redux/slices/filter-slice";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { useLocation, useNavigate } from "react-router-dom";
-
+import Resources from "../../locales/Resources.json";
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 const CategoryFilter = () => {
   const dispatch = useDispatch();
   const selectedCategories =
@@ -37,30 +38,7 @@ const CategoryFilter = () => {
     dispatch(setCategory(updatedCategoryFilters));
   };
 
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  const getCategories = async () => {
-    try {
-      const response = await axios.get(
-        "https://mister-x-store.com/mister_x_site/public/api/categories"
-      );
-      setCategories(response.data?.data ?? []);
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    
-    return () => {
-      dispatch(setCategory([]));  
-    };
-  }, []);
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  if (loading) return <div className="by-category">Loading...</div>;
+  const categories = useSelector((state) => state.common.categories);
 
   return (
     <div className="by-category">
@@ -71,7 +49,7 @@ const CategoryFilter = () => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Category
+        {Resources["category"][currentLanguage]}
       </button>
 
       <ul

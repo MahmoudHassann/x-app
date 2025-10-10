@@ -4,38 +4,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import TopBar from "../components/TopBar";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { setCategory } from "../redux/slices/filter-slice";
+import Resources from "../locales/Resources.json";
 
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 export default function Home() {
   const isOpen = useSelector((state) => state.layout.navOpen);
   const baseImageUrl = "https://mister-x-store.com/mister_x_site/public/imgs/";
-  const dispatch = useDispatch()
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const categories = useSelector((state) => state.common.categories);
 
-  const getCategories = async () => {
-    try {
-      const response = await axios.get(
-        "https://mister-x-store.com/mister_x_site/public/api/categories"
-      );
-      setCategories(response.data?.data ?? []);
-    } catch (e) {
-      setError("Categories not found");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
- 
   useEffect(() => {
     if (!loading && categories.length) {
       console.log(
@@ -70,19 +53,19 @@ export default function Home() {
             />
           </picture>
           <div className="buttons">
-            <Link to="shop">shop men</Link>
+            <Link to="shop">{Resources["shopMen"][currentLanguage]}</Link>
           </div>
         </header>
 
         <section className="new-arrivals">
           <div className="container-fluid px-5 py-4">
             <div className="special-head">
-              <h2>Explore New Arrivals</h2>
+              <h2>{Resources["exploreNewArrivals"][currentLanguage]}</h2>
             </div>
 
             <div className="filter-by">
               <ul className="nav nav-tabs" id="myTab" role="tablist">
-                <span>Filter by:</span>
+                <span>{Resources["filterBy"][currentLanguage]}</span>
                 <li className="nav-item" role="presentation">
                   <button
                     className="nav-link active"
@@ -94,7 +77,7 @@ export default function Home() {
                     aria-controls="men-tab-pane"
                     aria-selected="true"
                   >
-                    MEN
+                    {Resources["men"][currentLanguage]}
                   </button>
                 </li>
               </ul>
@@ -108,11 +91,10 @@ export default function Home() {
                   tabIndex="0"
                 >
                   <div className="collections">
-                
                     {!loading && categories.length > 0 && (
                       <Swiper
                         key={categories.length}
-                        slidesPerView={4} 
+                        slidesPerView={4}
                         spaceBetween={20}
                         pagination={{ clickable: true }}
                         modules={[Pagination]}
@@ -154,8 +136,6 @@ export default function Home() {
                         })}
                       </Swiper>
                     )}
-
-                  
                   </div>
                 </div>
               </div>

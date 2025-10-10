@@ -11,7 +11,7 @@ import {
 import AccordionItem from "./AccordionItem";
 import SearchBar from "../Search/SearchBar";
 import products from "../../json/products";
-export default function Navbar() {
+export default function Navbar(props) {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.user);
   const isNavOpen = useSelector((state) => state.layout.navOpen);
@@ -68,16 +68,13 @@ export default function Navbar() {
   };
   const menuItems = [
     {
-      title: "Men",
+      title: Resources["men"][currentLanguage],
       children: [
-        { title: "T-shirts", items: ["Polo", "V-neck", "Crew neck"] },
-        { title: "Jeans", items: ["Slim fit", "Regular fit", "Loose fit"] },
-        { title: "Shoes", items: ["Sneakers", "Boots", "Sandals"] },
+        { title: "T-shirts", items: [] },
+        { title: "Jeans", items: [] },
+        { title: "Shoes", items: [] },
       ],
     },
-    { title: "Women", children: [] },
-    { title: "Kids", children: [] },
-    { title: "Accessories", children: [] },
   ];
   useEffect(() => {
     if (!isParentOpen) {
@@ -122,7 +119,11 @@ export default function Navbar() {
             </div>
           </div>
           <div className="nav-center">
-            <h1 className="logo" ><img style={{width:'40px'}} src="logo.png" alt="logo" /></h1>
+            <h1 className="logo">
+              <Link to={"/"}>
+                <img style={{ width: "40px" }} src="logo.png" alt="logo" />
+              </Link>
+            </h1>
             <SearchBar setSearchQuery={setSearchQuery} />
           </div>
           <div className="nav-right">
@@ -133,47 +134,14 @@ export default function Navbar() {
               <i className="fa-solid fa-globe"></i>
               <select onChange={(e) => handleLang(e)}>
                 <option value="en" selected={currentLanguage === "en"}>
-                  en
+                  {Resources["english"][currentLanguage]}
                 </option>
                 <option value="ar" selected={currentLanguage === "ar"}>
-                  ar
+                  {Resources["arabic"][currentLanguage]}
                 </option>
               </select>
             </div>
 
-            <div className="whishlist">
-              <Link className={"user_wishlist"}>
-                <Link to={"/wishlist"} className="wishlist_icon">
-                  <i className="fa-regular fa-heart"></i>
-                </Link>
-                <div className="wishlist_panel">
-                  <div className="wrapper">
-                    <p className="text_loginFirst">
-                      You havent saved any items to your wishlist yet. Start
-                      shopping and add your favorite items to your wishlist.
-                    </p>
-                    <p className="text_loginFirst gray">
-                      Become a G-Star RAW member today or log in to save the
-                      item(s) so they wont be lost.
-                    </p>
-                    {!currentUser && (
-                      <Fragment>
-                        <Link className="large_link full_Width" to={"login"}>
-                          Login
-                        </Link>
-
-                        <Link
-                          className="large_link full_Width gray"
-                          to={"register"}
-                        >
-                          Create Account
-                        </Link>
-                      </Fragment>
-                    )}
-                  </div>
-                </div>
-              </Link>
-            </div>
             <div className="cart">
               <Link className="shopping-cart">
                 <Link className={"cart_icon"} to={"/checkout/shopping-bag"}>
@@ -186,11 +154,17 @@ export default function Navbar() {
                     {cartData.length > 0 && (
                       <>
                         <div className="header">
-                          Items not reserved
-                          <span>- checkout now to make them yours</span>
+                          {Resources["itemsNotReserved"][currentLanguage]}{" "}
+                          <span>
+                            {
+                              Resources["checkoutNowToMakeThemYours"][
+                                currentLanguage
+                              ]
+                            }
+                          </span>
                         </div>
                         <ul className="cart_product">
-                          {cartData?.map((productCart,index) => (
+                          {cartData?.map((productCart, index) => (
                             <li className="product" key={index}>
                               <span
                                 onClick={() => {
@@ -260,19 +234,22 @@ export default function Navbar() {
                           <div className="sub_details">
                             <ul>
                               <li>
-                                <p className="name">Subtotal</p>
+                                <p className="name">
+                                  {Resources["subtotal"][currentLanguage]}
+                                </p>
                                 <p className="data">{subTotal}</p>
                               </li>
+
                               <li>
-                                <p className="name">Shipping</p>
-                                <p className="data">Free</p>
-                              </li>
-                              <li>
-                                <p className="name">Tax</p>
+                                <p className="name">
+                                  {Resources["tax"][currentLanguage]}
+                                </p>
                                 <p className="data">{tax}</p>
                               </li>
                               <li className="total">
-                                <div className="name">Total</div>
+                                <div className="name">
+                                  {Resources["total"][currentLanguage]}
+                                </div>
                                 <div className="data">{totalAmount}</div>
                               </li>
                             </ul>
@@ -295,7 +272,7 @@ export default function Navbar() {
                         className="large_link"
                         to={"/checkout/shopping-bag"}
                       >
-                        checkout
+                        {Resources["proceedToCheckout"][currentLanguage]}
                       </Link>
                     )}
                   </div>
@@ -314,6 +291,7 @@ export default function Navbar() {
               item={item}
               isActive={activeItem === item.title}
               onToggle={() => toggleItem(item.title)}
+              categories={props.categories}
             />
           ))}
         </div>

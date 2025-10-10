@@ -25,7 +25,7 @@ const calculateTotalAmount = (cartItems) => {
     .toFixed(2);
 };
 
-const calculateTax = (subtotal, taxRate = 0.15) => {
+const calculateTax = (subtotal, taxRate = 0) => {
   return (subtotal * taxRate).toFixed(2);
 };
 

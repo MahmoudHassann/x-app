@@ -1,39 +1,20 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import Resources from "../../locales/Resources.json";
 
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 export default function Footer() {
   const isOpen = useSelector((state) => state.layout.navOpen);
-  const [categories, setCategories] = useState([]);
-  const getCategories = async () => {
-    try {
-      const response = await axios.get(
-        "https://mister-x-store.com/mister_x_site/public/api/categories"
-      );
-      setCategories(response.data?.data ?? []);
-    } catch (error) {
-      console.log("error");
-    }
-  };
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  // useEffect(() => {
-  //   // Mount : When Component open
-
-  //   return () => {
-  //     // Unmount : When Component close
-  //   }
-  // }, [ ])
+  const categories = useSelector((state) => state.common.categories);
 
   return (
     <footer>
       <div className={`custom-container ${isOpen ? "nav-open" : ""}`}>
         <div className="linklist-panel">
           <div className="linklist">
-            <h2>Links</h2>
+            <h2>{Resources["Categories"][currentLanguage]}</h2>
 
             <div className="linklist-list">
               {categories.map((cat) => (
@@ -42,20 +23,28 @@ export default function Footer() {
             </div>
           </div>
           <div className="linklist">
-            <h2>INFO</h2>
+            <h2> {Resources["Info"][currentLanguage]}</h2>
             <div className="linklist-list">
-              <Link to="privacy-policy">Privacy Policy</Link>
-              <Link to="terms">Terms</Link>
-              <Link to="refund">Refund</Link>
-              <Link to="shipping">Shipping</Link>
+              <Link to="privacy-policy">
+                {Resources["privacyPolicyTitle"][currentLanguage]}
+              </Link>
+              <Link to="terms">
+                {Resources["termsOfUseTitle"][currentLanguage]}
+              </Link>
+              <Link to="refund">
+                {Resources["refundPolicyTitle"][currentLanguage]}
+              </Link>
+              <Link to="shipping">
+                {Resources["shippingPolicyTitle"][currentLanguage]}
+              </Link>
             </div>
           </div>
           <div className="linklist">
-            <h2>STORE LOCATOR</h2>
+            <h2> {Resources["storeLocator"][currentLanguage]}</h2>
 
             <div className="linklist-list">
               <Link className="find-store" to="stores">
-                find a store
+                {Resources["FindAStores"][currentLanguage]}
               </Link>
             </div>
           </div>
@@ -72,7 +61,7 @@ export default function Footer() {
                   aria-expanded="false"
                   aria-controls="flush-collapseOne"
                 >
-                  Mister-x
+                  {Resources["Categories"][currentLanguage]}
                 </button>
               </h2>
               <div
@@ -82,17 +71,9 @@ export default function Footer() {
               >
                 <div className="accordion-body">
                   <div className="linklist-list">
-                    <a href="#">About G-Star</a>
-                    <a href="#">Jeans Fit Guide</a>
-                    <a href="#">Careers</a>
-                    <a href="#">Coroprate Responsibility</a>
-                    <a href="#">GSRD Foundation</a>
-                    <a href="#">G-Star Rewear</a>
-                    <a href="#">RAW Certified Tailors</a>
-                    <a href="#">Club-G</a>
-                    <a href="#">Newsletter</a>
-                    <a href="#">Gift Cards</a>
-                    <a href="#">Press Room</a>
+                    {categories.map((cat) => (
+                      <a href={`shop?cat=${cat.cat_id}`}>{cat.cat_name}</a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -107,7 +88,7 @@ export default function Footer() {
                   aria-expanded="false"
                   aria-controls="flush-collapseTwo"
                 >
-                  INFO
+                  {Resources["Info"][currentLanguage]}
                 </button>
               </h2>
               <div
@@ -117,10 +98,18 @@ export default function Footer() {
               >
                 <div className="accordion-body">
                   <div className="linklist-list">
-                    <Link to="privacy-policy">Privacy Policy</Link>
-                    <Link to="terms">Terms</Link>
-                    <Link to="refund">Refund</Link>
-                    <Link to="shipping">Shipping</Link>
+                    <Link to="privacy-policy">
+                      {Resources["privacyPolicyTitle"][currentLanguage]}
+                    </Link>
+                    <Link to="terms">
+                      {Resources["termsOfUseTitle"][currentLanguage]}
+                    </Link>
+                    <Link to="refund">
+                      {Resources["refundPolicyTitle"][currentLanguage]}
+                    </Link>
+                    <Link to="shipping">
+                      {Resources["shippingPolicyTitle"][currentLanguage]}
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -135,7 +124,7 @@ export default function Footer() {
                   aria-expanded="false"
                   aria-controls="flush-collapseThree"
                 >
-                  STORE LOCATOR
+                  {Resources["storeLocator"][currentLanguage]}
                 </button>
               </h2>
               <div
@@ -145,15 +134,45 @@ export default function Footer() {
               >
                 <div className="accordion-body">
                   <div className="linklist-list">
-                    <a className="find-store" href="#">
-                      find a store
-                    </a>
+                    <Link className="find-store" to="stores">
+                      {Resources["FindAStores"][currentLanguage]}
+                    </Link>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <ul className="links">
+          <li>
+            <a
+              target="_blank"
+              href="https://www.facebook.com/mister.x112"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-facebook-f"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.instagram.com/mister.x1122/?__pwa=1#"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-instagram"></i>
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              href="https://www.tiktok.com/@mister.xxxx1"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-tiktok"></i>
+            </a>
+          </li>
+        </ul>
       </div>
     </footer>
   );

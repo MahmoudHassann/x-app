@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
  import { useEffect, useState } from "react";
 import axios from "axios";
 import { setSizes } from "../../redux/slices/filter-slice";
-
+import Resources from "../../locales/Resources.json";
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 const SizeFilter = () => {
   const dispatch = useDispatch();
   const selectedSizes = useSelector((state) => state.filters.sizes);
@@ -49,7 +52,7 @@ const SizeFilter = () => {
         data-bs-toggle="dropdown"
         aria-expanded="false"
       >
-        Size
+        {Resources["size"][currentLanguage]}
       </button>
       <ul className="dropdown-menu parentFilterPanel">
         {sizesData.map(({ size_name, size_type, size_id }) => (

@@ -64,3 +64,40 @@ ul.parentFilterPanel {
     margin-left: 0;
   }
 }
+
+html[dir="rtl"] {
+  .dropdown-toggle::after {
+    margin-left: unset;
+    margin-right: 0.255em;
+  }
+  .accordion-button::after {
+    margin-left: unset;
+    margin-right: auto;
+  }
+  span.icon_left {
+    margin-right: unset;
+    margin-left: 6px;
+  }
+  .checkout_cart .section_checkOut .grid_wrap .cart_products .product .details {
+    margin-left: unset;
+    margin-right: 14px;
+  }
+  .form-floating > label {
+    left: unset;
+    right: 0;
+  }
+  .form-control.is-invalid,
+  .was-validated .form-control:invalid {
+    background-position: left calc(0.375em + 0.1875rem) center;
+  }
+  .me-2 {
+    margin-right: unset !important;
+
+    margin-left: 0.5rem !important;
+  }
+  .me-1 {
+    margin-right: unset !important;
+
+    margin-left: 0.25rem !important;
+  }
+}

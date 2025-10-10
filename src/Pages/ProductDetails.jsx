@@ -8,7 +8,8 @@ import { addItem } from "../redux/slices/cart-slice.js";
 import { notifyError, notifyWarning } from "../dependencies/Notification.js";
 import QuantityIncrementAnimation from "../dependencies/QuantityIncrementAnimation";
 import Resources from "../locales/Resources.json";
-import axios from "axios";
+
+import Api from "../dependencies/instanceAxios.js";
 
 const IMG_BASE = "https://mister-x-store.com/mister_x_site/public/imgs/";
 
@@ -23,6 +24,7 @@ function normalizeProduct(res) {
         price_after_sale: Number(s.price_after_sale || s.price || 0),
         size_type: s.size_type || null,
         branch: s.branch || null,
+        size_id: s.size_id || null,
       };
     });
 
@@ -52,6 +54,7 @@ function normalizeProduct(res) {
   return {
     id: res.product_id,
     name: res.product_name,
+    shipping: res.shipping,
     category: res.category,
     bestsellers: !!res.Bestsellers,
     sale: Number(res.Sale || 0),
@@ -76,6 +79,7 @@ export default function ProductDetails() {
   const [showAnimation, setShowAnimation] = useState(false);
 
   const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSizeId, setSelectedSizeId] = useState(null);
 
   const cartData = useSelector((state) => state.cart.cartItems);
   const isOpen = useSelector((state) => state.layout.navOpen);
@@ -85,11 +89,10 @@ export default function ProductDetails() {
     : "en";
 
   const fetchProduct = async () => {
-    const { data } = await axios.get(
-      `https://mister-x-store.com/mister_x_site/public/api/products/${id}`
-    );
-
-    return data?.data ?? data;
+    const response = await Api.get(`products/${id}`);
+    if (response && response.status === 200) {
+      return response.data?.data ?? data;
+    }
   };
 
   useEffect(() => {
@@ -180,23 +183,24 @@ export default function ProductDetails() {
     setLowStockMessage("");
   }
 
-  function handleSizeChange(size) {
+  function handleSizeChange(size, size_id) {
     setSelectedSize(size);
+    setSelectedSizeId(size_id);
     if (!currentPanel) return;
 
     const info = currentPanel.stockBySize[size];
     if (info && info.qty <= 2 && info.qty > 0) {
       setLowStockMessage(
         <>
-          Only <strong>{info.qty}</strong> left for size <strong>{size}</strong>{" "}
-          in <strong>{selectedColor}</strong>!
+          {Resources["only"][currentLanguage]} <strong>{info.qty}</strong> {Resources["leftForSize"][currentLanguage]} <strong>{size}</strong>{" "}
+          {Resources["fromColor"][currentLanguage]} <strong>{selectedColor}</strong>!
         </>
       );
     } else {
       setLowStockMessage(
         <>
           <span className="stock-available">
-            Stock Available <strong>{info.qty}</strong> for size{" "}
+             {Resources["availableStocks"][currentLanguage]} <strong>{info.qty}</strong> {Resources["forSize"][currentLanguage]}{" "}
             <strong>{size}</strong>
           </span>
         </>
@@ -205,6 +209,7 @@ export default function ProductDetails() {
   }
 
   const handleAddToCart = () => {
+    console.log(product, "product");
     if (!product || !currentPanel) return;
 
     if (!selectedSize) {
@@ -237,12 +242,13 @@ export default function ProductDetails() {
       setShowAnimation(false);
       setTimeout(() => setShowAnimation(true), 10);
     }
-    console.log(currentPanel,'currentPanelcurrentPanel')
+    console.log(currentPanel, "currentPanelcurrentPanel");
     dispatch(
       addItem({
         ...product,
         selectedColor,
         selectedSize,
+        selectedSizeId,
         unitPrice: info.price_after_sale ?? info.price,
         product_color_id: currentPanel.product_color_id,
         price: info.price,
@@ -279,36 +285,49 @@ export default function ProductDetails() {
                       currentPriceInfo.sale > 0 ? (
                         <>
                           <span className="text-decoration-line-through me-2">
-                            EGP{Number(currentPriceInfo.price).toFixed(2)}
+                            {Resources["EGP"][currentLanguage]}{" "}
+                            {Number(currentPriceInfo.price).toFixed(2)}
                           </span>
                           <span className="fw-bold">
-                            EGP
+                            {Resources["EGP"][currentLanguage]}
                             {Number(currentPriceInfo.price_after_sale).toFixed(
                               2
                             )}
                           </span>
-                          <span className="vat"> including VAT</span>
+                          <span className="vat">
+                            {" "}
+                            {Resources["includingVat"][currentLanguage]}
+                          </span>
                         </>
                       ) : (
                         <>
-                          EGP{Number(currentPriceInfo.price).toFixed(2)}
-                          <span className="vat"> including VAT</span>
+                          {Resources["EGP"][currentLanguage]}{" "}
+                          {Number(currentPriceInfo.price).toFixed(2)}
+                          <span className="vat">
+                            {" "}
+                            {Resources["includingVat"][currentLanguage]}
+                          </span>
                         </>
                       )
                     ) : (
                       <>
-                        EGP{Number(product.price || 0).toFixed(2)}{" "}
-                        <span className="vat">including VAT</span>
+                        {Resources["EGP"][currentLanguage]}{" "}
+                        {Number(product.price || 0).toFixed(2)}{" "}
+                        <span className="vat">
+                          {" "}
+                          {Resources["includingVat"][currentLanguage]}
+                        </span>
                       </>
                     )}
                   </div>
 
                   <div className="colors-panel my-20">
                     <p className="special-gray-title-14 m-0">
-                      Available color(s)
+                      {Resources["AvailableColors"][currentLanguage]}
                     </p>
                     <p className="special-gray-title-14">
-                      Color <span className="color-name">{selectedColor}</span>
+                      {Resources["Color"][currentLanguage]}{" "}
+                      <span className="color-name">{selectedColor}</span>
                     </p>
                     <div className="panel">
                       <ul>
@@ -335,15 +354,25 @@ export default function ProductDetails() {
                   </div>
 
                   <div className="sizing-area">
-                    <p className="special-gray-title-14 ">Sizing</p>
+                    <p className="special-gray-title-14 ">
+                      {Resources["Sizing"][currentLanguage]}
+                    </p>
                     <>
-                      <p className="size special-gray-title-13 m-0">Size</p>
+                      <p className="size special-gray-title-13 m-0">
+                        {Resources["size"][currentLanguage]}
+                      </p>
                       <div className="panel">
                         <ul className="my-6">
+                          {console.log(
+                            currentPanel.stockBySize,
+                            "currentPanel.stockBySize"
+                          )}
                           {currentPanel &&
                             Object.keys(currentPanel.stockBySize || {}).map(
                               (size, index) => {
+                                console.log(size, "sizeeee");
                                 const info = currentPanel.stockBySize[size];
+                                console.log(info, "infoinfoinfoinfo");
                                 const isAvailable = (info?.qty || 0) > 0;
                                 return (
                                   <li
@@ -354,7 +383,8 @@ export default function ProductDetails() {
                                         : ""
                                     } ${!isAvailable ? "disabled-size" : ""}`}
                                     onClick={() =>
-                                      isAvailable && handleSizeChange(size)
+                                      isAvailable &&
+                                      handleSizeChange(size, info.size_id)
                                     }
                                     aria-disabled={!isAvailable}
                                   >
@@ -369,7 +399,7 @@ export default function ProductDetails() {
                   </div>
 
                   <div className="is-available">
-                    <p>Product is available</p>
+                    <p>{Resources["productIsAvailable"][currentLanguage]}</p>
                   </div>
                   <div className="low_stock_msg">
                     <p>{lowStockMessage}</p>
@@ -377,11 +407,8 @@ export default function ProductDetails() {
 
                   <div className="buttons-area">
                     <button onClick={handleAddToCart} className="add_cart">
-                      add to bag
+                      {Resources["addToBag"][currentLanguage]}
                       {showAnimation && <QuantityIncrementAnimation />}
-                    </button>
-                    <button className="add_wishlist">
-                      <i className="fa-regular fa-heart"></i>
                     </button>
                   </div>
 
@@ -399,7 +426,13 @@ export default function ProductDetails() {
                         </div>
                         <p>UPS</p>
                       </div>
-                      <p className="cost_shipping">Free</p>
+                      {console.log(product, "proddd")}
+                      <p className="cost_shipping">
+                        <span style={{color:'black',textTransform:'capitalize', marginInlineEnd:'0.5rem'}}>{Resources["shippingCost"][currentLanguage]}:</span>
+                        {product.shipping
+                          ? product.shipping
+                          : Resources["FreeShipping"][currentLanguage]}
+                      </p>
                     </div>
                   </div>
 
@@ -418,7 +451,7 @@ export default function ProductDetails() {
                             aria-expanded="false"
                             aria-controls="flush-collapseDstaq"
                           >
-                            Available branches
+                            {Resources["availableBranches"][currentLanguage]}
                           </button>
                         </h2>
                         <div
@@ -429,41 +462,108 @@ export default function ProductDetails() {
                         >
                           <div className="accordion-body">
                             {currentPanel &&
-                              Object.keys(currentPanel.stockBySize || {}).map(
-                                (size, index) => {
-                                  const info = currentPanel.stockBySize[size];
-                                  const isAvailable = (info?.qty || 0) > 0;
-                                  return (
-                                    <li
-                                      key={index}
-                                      className={`size-item ${
-                                        selectedSize === size
-                                          ? "selected-size"
-                                          : ""
-                                      } ${!isAvailable ? "disabled-size" : ""}`}
-                                      onClick={() =>
-                                        isAvailable && handleSizeChange(size)
+                              (() => {
+                                const grouped = Object.keys(
+                                  currentPanel.stockBySize || {}
+                                ).reduce((acc, size) => {
+                                  const info =
+                                    currentPanel.stockBySize[size] || {};
+                                  const branch = info.branch || "";
+                                  if (!acc[branch]) acc[branch] = [];
+                                  acc[branch].push({
+                                    size,
+                                    qty: info.qty ?? 0,
+                                  });
+                                  return acc;
+                                }, {});
+
+                                return Object.entries(grouped).map(
+                                  ([branchName, items], index) => {
+                                    const sortedItems = [...items].sort(
+                                      (a, b) => {
+                                        const na = parseFloat(a.size);
+                                        const nb = parseFloat(b.size);
+                                        const aIsNum = !isNaN(na);
+                                        const bIsNum = !isNaN(nb);
+                                        if (aIsNum && bIsNum) return na - nb;
+                                        if (aIsNum) return -1;
+                                        if (bIsNum) return 1;
+                                        return String(a.size).localeCompare(
+                                          String(b.size),
+                                          "ar"
+                                        );
                                       }
-                                      aria-disabled={!isAvailable}
-                                      title={
-                                        isAvailable
-                                          ? `Available at ${info.branch} - Qty: ${info.qty}`
-                                          : "Out of stock"
-                                      }
-                                    >
-                                      <span className="size-label">{size}</span>
-                                      {isAvailable && (
-                                        <span className="branch-info">
-                                          {info.branch}
-                                          <span className="qty-badge">
-                                            {info.qty}
-                                          </span>
-                                        </span>
-                                      )}
-                                    </li>
-                                  );
-                                }
-                              )}
+                                    );
+
+                                    const total = sortedItems.reduce(
+                                      (s, it) => s + (Number(it.qty) || 0),
+                                      0
+                                    );
+
+                                    return (
+                                      <div
+                                        key={index}
+                                        className="branch-section mb-4"
+                                      >
+                                        <h5 className="branch-title">
+                                          {branchName}
+                                        </h5>
+                                        <table className="table table-bordered table-striped text-center align-middle">
+                                          <thead className="table-light">
+                                            <tr>
+                                              <th>
+                                                {" "}
+                                                {
+                                                  Resources["size"][
+                                                    currentLanguage
+                                                  ]
+                                                }
+                                              </th>
+                                              <th>
+                                                {
+                                                  Resources["quantity"][
+                                                    currentLanguage
+                                                  ]
+                                                }
+                                              </th>
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            {sortedItems.map((item, idx) => (
+                                              <tr
+                                                key={idx}
+                                                className={
+                                                  item.qty === 0
+                                                    ? "table-danger"
+                                                    : ""
+                                                }
+                                                title={
+                                                  item.qty > 0
+                                                    ? "متاح"
+                                                    : "غير متاح"
+                                                }
+                                              >
+                                                <td>{item.size}</td>
+                                                <td>{item.qty}</td>
+                                              </tr>
+                                            ))}
+                                            <tr className="table-secondary fw-bold">
+                                              <td>
+                                                {
+                                                  Resources["total"][
+                                                    currentLanguage
+                                                  ]
+                                                }
+                                              </td>
+                                              <td>{total}</td>
+                                            </tr>
+                                          </tbody>
+                                        </table>
+                                      </div>
+                                    );
+                                  }
+                                );
+                              })()}
                           </div>
                         </div>
                       </div>

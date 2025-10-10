@@ -3,13 +3,12 @@ import FilterPanel from "../components/FilterPanel/FilterPanel";
 import Product from "../components/Shop/Product";
 import TopBar from "../components/TopBar";
 import { useEffect, useState, useMemo } from "react";
-import axios from "axios";
+ 
 import { useLocation } from "react-router-dom";
 import { resetFilters, setCategory } from "../redux/slices/filter-slice";
+import Api from "../dependencies/instanceAxios";
 
 export default function Shop() {
-
-  
   const dispatch = useDispatch();
   const isOpen = useSelector((state) => state.layout.navOpen);
   const filters = useSelector((state) => state.filters);
@@ -30,7 +29,6 @@ export default function Shop() {
     if (!current.includes(catIdStr)) {
       dispatch(setCategory([...current, catIdStr]));
     }
- 
   }, [catIdStr]);
 
   const mergedFilters = useMemo(() => {
@@ -43,6 +41,12 @@ export default function Shop() {
     }
     return f;
   }, [filters, catIdStr]);
+
+  useEffect(() => {
+    return () => {
+      dispatch(resetFilters());
+    };
+  }, []);
 
   const getProducts = async (filtersArg) => {
     let { sortedBy, ...cleanFilters } = filtersArg || {};
@@ -69,17 +73,19 @@ export default function Shop() {
       cleanFilters.category = cleanFilters.category.map(String);
     }
 
-    const response = await axios.post(
-      `https://mister-x-store.com/mister_x_site/public/api/products/${sortDir}/${sortedBy}/${pageNumber}/${pageSize}`,
-      { filters: cleanFilters }
+    const response = await Api.post(
+      `products/${sortDir}/${sortedBy}/${pageNumber}/${pageSize}`,
+      {
+        data: { filters: cleanFilters },
+      }
     );
+ 
 
     setProducts(response.data.data || []);
   };
 
   useEffect(() => {
     getProducts(mergedFilters);
-  
   }, [mergedFilters, pageNumber, pageSize]);
 
   useEffect(() => {

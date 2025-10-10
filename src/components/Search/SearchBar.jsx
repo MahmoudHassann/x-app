@@ -2,8 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { setSearchQuery } from "../../redux/slices/search-slice";
-import axios from "axios";
-
+import Api from "../../dependencies/instanceAxios";
+import Resources from "../../locales/Resources.json";
+let currentLanguage = localStorage.getItem("language")
+  ? localStorage.getItem("language")
+  : "en";
 // const keywords = ["Nifous", "Nifous 22", "Carg", "Jean", "Mah"];
 const keywords = [""];
 const baseImageUrl = "https://mister-x-store.com/mister_x_site/public/imgs/";
@@ -44,12 +47,10 @@ export default function SearchBar() {
 
     try {
       setLoading(true);
-      const response = await axios.post(
-        `https://mister-x-store.com/mister_x_site/public/api/products/desc/price/1/20`,
-        {
-          keyword: keyword,
-        }
-      );
+
+      const response = await Api.post(`products/desc/price/1/20`, {
+        keyword: keyword,
+      });
 
       const productsWithColors = getProductsWithColors(
         response.data.data || []
@@ -142,7 +143,7 @@ export default function SearchBar() {
       <input
         id="search"
         type="text"
-        placeholder="search"
+        placeholder={Resources["search"][currentLanguage]}
         value={inputValue}
         onChange={handleInputChange}
         onKeyDown={handleSearch}
@@ -206,11 +207,15 @@ export default function SearchBar() {
                           {item.value.hasDiscount ? (
                             <>
                               <p className="price">
-                                {item.value.priceAfterSale} EGP
+                                {item.value.priceAfterSale}{" "}
+                                {Resources["EGP"][currentLanguage]}
                               </p>
                             </>
                           ) : (
-                            <p className="price">{item.value.price} EGP</p>
+                            <p className="price">
+                              {item.value.price}{" "}
+                              {Resources["EGP"][currentLanguage]}
+                            </p>
                           )}
                         </div>
                       </div>
