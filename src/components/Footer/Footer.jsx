@@ -44,10 +44,10 @@ export default function Footer() {
           <div className="linklist">
             <h2>INFO</h2>
             <div className="linklist-list">
-              <a href="#">Privacy Policy</a>
-              <a href="#">Track my order</a>
-              <a href="#">Terms & Conditions</a>
-              <a href="#">Website terms of use</a>
+              <Link to="privacy-policy">Privacy Policy</Link>
+              <Link to="terms">Terms</Link>
+              <Link to="refund">Refund</Link>
+              <Link to="shipping">Shipping</Link>
             </div>
           </div>
           <div className="linklist">
@@ -117,10 +117,10 @@ export default function Footer() {
               >
                 <div className="accordion-body">
                   <div className="linklist-list">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Track my order</a>
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Website terms of use</a>
+                    <Link to="privacy-policy">Privacy Policy</Link>
+                    <Link to="terms">Terms</Link>
+                    <Link to="refund">Refund</Link>
+                    <Link to="shipping">Shipping</Link>
                   </div>
                 </div>
               </div>

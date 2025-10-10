@@ -102,5 +102,37 @@
   "FindAStores": {
     "en": "Find a Store",
     "ar": "البحث عن متجر"
+  },
+  "privacyPolicyTitle": {
+    "en": "Privacy Policy",
+    "ar": "سياسة الخصوصية"
+  },
+  "privacyPolicyIntro": {
+    "en": "Welcome to our Privacy Policy page. Your privacy is critically important to us.",
+    "ar": "مرحبًا بك في صفحة سياسة الخصوصية الخاصة بنا. خصوصيتك مهمة جدًا بالنسبة لنا."
+  },
+  "informationWeCollect": {
+    "en": "Information We Collect",
+    "ar": "المعلومات التي نجمعها"
+  },
+  "informationWeCollectContent": {
+    "en": "We collect information to provide better services to all our users.",
+    "ar": "نقوم بجمع المعلومات لتقديم خدمات أفضل لجميع مستخدمينا."
+  },
+  "howWeUseInformation": {
+    "en": "How We Use Information",
+    "ar": "كيف نستخدم المعلومات"
+  },
+  "howWeUseInformationContent": {
+    "en": "The information we collect is used to improve our services and personalize your experience.",
+    "ar": "نستخدم المعلومات التي نجمعها لتحسين خدماتنا وتخصيص تجربتك."
+  },
+  "contactUsTitle": {
+    "en": "Contact Us",
+    "ar": "اتصل بنا"
+  },
+  "contactUsContent": {
+    "en": "If you have any questions about our privacy practices, please contact us.",
+    "ar": "إذا كانت لديك أي أسئلة حول ممارسات الخصوصية لدينا، يرجى التواصل معنا."
   }
 }

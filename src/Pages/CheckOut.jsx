@@ -75,7 +75,7 @@ export default function CheckOut() {
       );
 
       const sizeData = selectedColorData?.stockBySize[product.selectedSize];
-
+      console.log(product,'product')
       return {
         product_color_id: product.product_color_id,
         size_id: product.selectedSize,
