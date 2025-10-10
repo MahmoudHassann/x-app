@@ -35,7 +35,6 @@ const Product = ({ product }) => {
        <Link to={`/shop${productUrl}`}>
           <img
             src={`${baseImageUrl}${product.product_img}`}
-            // src={`${baseImageUrl}test.png`}
             alt={`${product.product_name}`}
             className="main-image"
           />

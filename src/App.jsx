@@ -9,6 +9,10 @@ import { MainLoading } from "./components/Loading/MainLoading.jsx";
 import PaymentCallback from "./components/PaymentCallback.jsx";
 import PaymentFailed from "./components/PaymentFailed.jsx";
 import PaymentSuccess from "./components/PaymentSuccess.jsx";
+import PrivacyPolicy from "./Pages/PrivacyPolicy.jsx";
+import Terms from "./Pages/Terms.jsx";
+import Refund from "./Pages/Refund.jsx";
+import Shipping from "./Pages/Shipping.jsx";
 
 const Home = lazy(() => import("./Pages/Home"));
 const Shop = lazy(() => import("./Pages/Shop"));
@@ -28,6 +32,10 @@ function App() {
         { path: "", element: <Home /> },
         { path: "shop", element: <Shop /> },
         { path: "stores", element: <Stores /> },
+        { path: "privacy-policy", element: <PrivacyPolicy /> },
+        { path: "terms", element: <Terms /> },
+        { path: "refund", element: <Refund /> },
+        { path: "shipping", element: <Shipping /> },
         { path: "search", element: <SearchPage /> },
         {
           path: "payment-callback",
