@@ -134,7 +134,7 @@ nav .nav-container .search_input:focus {
 @media (max-width: 767px) {
   nav .nav-container .nav-right .language,
   nav .nav-container .nav-right .user {
-    display: none;
+    // display: none;
   }
   nav .nav-container .nav-left .links {
     display: none;
@@ -525,14 +525,21 @@ html[dir="rtl"] {
     margin-left: unset;
     margin-right: 250px;
     @media (max-width: 1200px) {
-      
-        width: 100%;
-        margin-right: 0;
- 
+      width: 100%;
+      margin-right: 0;
     }
   }
   .sidebar .accordion-body {
     padding-left: unset !important;
     padding-right: 20px !important;
   }
+  .modal-header .btn-close {
+    margin: calc(-.5 * var(--bs-modal-header-padding-y)) auto calc(-.5 * var(--bs-modal-header-padding-y)) calc(-.5 * var(--bs-modal-header-padding-x));
+  }
+}
+
+.active-lang {
+  background-color: #000 !important;
+  color: #fff !important;
+  border-color: #000 !important;
 }

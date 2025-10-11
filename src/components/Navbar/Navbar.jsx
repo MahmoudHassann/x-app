@@ -130,16 +130,73 @@ export default function Navbar(props) {
             <div className="search">
               <i className="fa-solid fa-magnifying-glass"></i>
             </div>
+
             <div className="language">
-              <i className="fa-solid fa-globe"></i>
-              <select onChange={(e) => handleLang(e)}>
-                <option value="en" selected={currentLanguage === "en"}>
-                  {Resources["english"][currentLanguage]}
-                </option>
-                <option value="ar" selected={currentLanguage === "ar"}>
-                  {Resources["arabic"][currentLanguage]}
-                </option>
-              </select>
+              <i
+                className="fa-solid fa-globe"
+                data-bs-toggle="modal"
+                data-bs-target="#languageModal"
+                style={{ cursor: "pointer", fontSize: "20px" }}
+              ></i>
+
+              <div
+                className="modal fade"
+                id="languageModal"
+                tabIndex="-1"
+                aria-labelledby="languageModalLabel"
+                aria-hidden="true"
+              >
+                <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                    <div className="modal-header">
+                      <h5
+                        className="modal-title text-dark"
+                        id="languageModalLabel"
+                      >
+                        {currentLanguage === "ar"
+                          ? "اختر اللغة"
+                          : "Select Language"}
+                      </h5>
+                      <button
+                        type="button"
+                        className="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+
+                    <div className="modal-body">
+                      <div className="d-flex justify-content-center gap-2 mt-2">
+                        <button
+                          className={`btn btn-outline-dark ${
+                            currentLanguage === "en" ? "active-lang" : ""
+                          }`}
+                          onClick={() => {
+                            localStorage.setItem("language", "en");
+                            window.location.reload();
+                          }}
+                          data-bs-dismiss="modal"
+                        >
+                          English
+                        </button>
+
+                        <button
+                          className={`btn btn-outline-dark ${
+                            currentLanguage === "ar" ? "active-lang" : ""
+                          }`}
+                          onClick={() => {
+                            localStorage.setItem("language", "ar");
+                            window.location.reload();
+                          }}
+                          data-bs-dismiss="modal"
+                        >
+                          العربية
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="cart">
