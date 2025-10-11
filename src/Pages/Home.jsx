@@ -37,15 +37,15 @@ export default function Home() {
           <picture className="top-banner-image">
             <source
               media="(min-width: 1024px)"
-              srcSet="/banner/top-banner/HOMEPAGE_DESKTOP.jpeg"
+              srcSet="/banner/top-banner/HOMEPAGE_DESKTOP.png"
             />
             <source
               media="(min-width: 768px)"
-              srcSet="/banner/top-banner/HOMEPAGE_TABLET.jpeg"
+              srcSet="/banner/top-banner/HOMEPAGE_TABLET.png"
             />
             <source
               media="(min-width: 0px)"
-              srcSet="/banner/top-banner/HOMEPAGE_MOBILE.jpeg"
+              srcSet="/banner/top-banner/HOMEPAGE_MOBILE.png"
             />
             <img
               decoding="async"

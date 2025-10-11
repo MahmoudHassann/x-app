@@ -162,7 +162,11 @@
   padding: 2.5rem;
   top: 0;
   left: 0;
+   @media(max-width:991px) {
+    display: none;
+   }
 }
+
 
 .thumbnails-container {
   overflow: hidden;

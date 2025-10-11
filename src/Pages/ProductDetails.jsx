@@ -266,7 +266,7 @@ export default function ProductDetails() {
         <div className="container-fluid">
           {product ? (
             <div className="row">
-              <div className="col-md-8 p-0">
+              <div className="col-12 col-xl-8 p-0">
                 <div className="preview_area">
                   <ProductGallery
                     images={galleryImages}
@@ -276,7 +276,7 @@ export default function ProductDetails() {
                 </div>
               </div>
 
-              <div className="col-md-4">
+              <div className="col-12 col-xl-4">
                 <div className="details_area" ref={detailsRef}>
                   <div className="name-product">{product.name}</div>
 

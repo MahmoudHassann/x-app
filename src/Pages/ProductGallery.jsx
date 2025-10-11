@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight, ZoomIn, ZoomOut } from "lucide-react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Thumbs, Navigation, Keyboard } from "swiper/modules";
-import "./ProductGallery.css";
+import "./ProductGallery.scss";
 
 const ProductGallery = ({ images = [], selectedImage, onChangeMain }) => {
   const [currentImage, setCurrentImage] = useState(selectedImage || images[0]);
